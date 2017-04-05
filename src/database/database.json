@@ -1,0 +1,46 @@
+{"database":
+  {
+    "users": [
+      {
+        "user_id": 1,
+        "firstname": "Jhon",
+        "lastname": "Doe",
+        "username": "joey",
+        "address": "New York pk Street 2",
+        "email": "user@mail.com"
+      },
+      {
+        "user_id": 2,
+        "firstname": "Mark",
+        "lastname": "Brady",
+        "username": "Boree",
+        "address": "Poland Street 2",
+        "email": "user2@mail.com"
+      }
+    ],
+    "foods":[
+      {
+        "food_id": 1,
+        "name": "inferno",
+        "category": "hot",
+        "picture": "/assets/picture/hot_pizza.png",
+        "basis_price": 15.5,
+        "size": "big"
+      },
+      {
+
+      }
+    ],
+    "orders":[
+      {
+        "user_id": 1,
+        "food_id": 1,
+        "delivered":false
+      },
+      {
+
+      }
+
+    ]
+  }
+}
