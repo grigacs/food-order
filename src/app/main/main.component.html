@@ -1,3 +1,9 @@
-<p>
-  main works!
-</p>
+<app-carousel></app-carousel>
+<div class="line"></div>
+<ng-container *ngIf="sessionService.isLoggedIn()">
+  {{getUser()}}
+  {{user.username}}
+</ng-container>
+<ng-container *ngIf="!sessionService.isLoggedIn()">
+  No user here!
+</ng-container>

@@ -1,0 +1,35 @@
+.login_form_float, .registration_button_float{
+  float: right;
+}
+
+button{
+  border-radius: 0 !important;
+  margin: 0 0 0 10px;
+}
+
+
+form{
+  text-align: center;
+}
+
+form > span{
+  line-height: 3;
+  color:#CC3232;
+}
+
+.uname, .logout{
+  float:right;
+}
+
+.uname{
+  font-family: 'Roboto Slab', serif;
+  font-size: 18px;
+  margin: 5px 20px 0 0;
+}
+
+#username, #password{
+  width: 130px;
+  padding: 5px 0 5px 5px;
+  margin: 0 0 0 10px;
+}
+

@@ -9,12 +9,21 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FoodOrderComponent } from './food-order/food-order.component';
 import { MainComponent } from './main/main.component';
 import { RouterModule, Routes } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import {RegisterComponent} from "./register/register.component";
+import { LoginComponent } from './login/login.component';
+import {SessionService} from "./session.service";
+import { CartComponent } from './cart/cart.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import {CarouselModule} from "ngx-bootstrap";
+
 
 const appRoutes: Routes = [
     { path: '', component: MainComponent},
     { path: 'contact', component: ContactComponent },
     { path: 'main', component: MainComponent },
     { path: 'order', component: FoodOrderComponent },
+    { path: 'register', component: RegisterComponent },
     { path: '**', redirectTo: 'page-not-found', pathMatch: 'full'}
 ];
 
@@ -24,15 +33,21 @@ const appRoutes: Routes = [
     ContactComponent,
     PageNotFoundComponent,
     FoodOrderComponent,
-    MainComponent
+    MainComponent,
+    HeaderComponent,
+    RegisterComponent,
+    LoginComponent,
+    CartComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    CarouselModule
   ],
-  providers: [],
+  providers: [SessionService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

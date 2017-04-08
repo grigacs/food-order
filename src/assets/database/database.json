@@ -6,6 +6,7 @@
         "firstname": "Jhon",
         "lastname": "Doe",
         "username": "joey",
+        "password": "password",
         "address": "New York pk Street 2",
         "email": "user@mail.com"
       },
@@ -14,6 +15,7 @@
         "firstname": "Mark",
         "lastname": "Brady",
         "username": "Boree",
+        "password": "password",
         "address": "Poland Street 2",
         "email": "user2@mail.com"
       }

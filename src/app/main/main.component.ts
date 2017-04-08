@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SessionService} from "../session.service";
+import {Users} from "../interfaces/user.interface";
 
 @Component({
   selector: 'app-main',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  user: Users[];
+
+  constructor(public sessionService: SessionService) { }
 
   ngOnInit() {
+  }
+
+  getUser(){
+    this.user = this.sessionService.getUser();
   }
 
 }
