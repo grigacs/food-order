@@ -25,12 +25,17 @@
         "food_id": 1,
         "name": "inferno",
         "category": "hot",
-        "picture": "/assets/picture/hot_pizza.png",
+        "picture": "/assets/pictures/hot_pizza.png",
         "basis_price": 15.5,
         "size": "big"
       },
-      {
-
+	  {
+        "food_id": 2,
+        "name": "yeti",
+        "category": "cave",
+        "picture": "/assets/pictures/cave_pizza.png",
+        "basis_price": 12.75,
+        "size": "big"
       }
     ],
     "orders":[

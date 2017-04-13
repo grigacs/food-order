@@ -1,0 +1,19 @@
+.page-not-found {
+    font-family: 'Roboto Slab', serif;
+    text-align: center;
+    font-size: 50px;
+    background-color: red;
+    color: white;
+}
+
+a:link, a:active, a:visited{
+  font-family: 'Roboto Slab', serif;
+  padding: 0 0 0 10px;
+  color: #333;
+  transition: color 0.5s ease;
+  text-decoration: none;
+}
+
+a:hover{
+
+}

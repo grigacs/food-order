@@ -1,3 +1,16 @@
-<p>
-  food-order works!
-</p>
+  <!--food-order works!
+   <button class="btn btn-success btn-md" (click)="showfood()">Showfood</button>-->
+<div class="pizza_all">
+<span class="pizza_title"><h1> Our pizzas </h1></span>
+<li *ngFor="let item of food" class="pizza">
+      <div>
+          <span class="pizza_detail">
+              <img src= '{{ item.picture }}' alt='{{ item.name }}'/> <br>
+              <label id="name">Name: </label> {{ item.name }} <br>
+              <label id="name">Category: </label> {{ item.category }} <br>
+              <label id="name"> Price:  </label> €{{ item.basis_price }} <br>
+              <button class="btn btn-success btn-md" value='{{ item.food_id }}'> Add to cart </button>
+          </span>
+      </div>
+</li>
+</div>   

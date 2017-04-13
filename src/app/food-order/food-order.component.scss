@@ -1,0 +1,39 @@
+
+img {
+    height: 100px;
+    width: 100%;
+    border-bottom-color: grey;
+    border-bottom-style: solid;
+}
+.pizza {
+    display: inline-block;
+    border: solid black 2px;
+    border-radius: 7px;
+    height: 8%;
+    width: 8%;
+    margin: 10px;
+    background-color: lightblue; 
+}
+
+.pizza_detail {
+    color: black;
+    font-size: 20px;
+}
+
+.pizza_title {
+    margin: 10px;
+    text-align: center;
+}
+
+.pizza_all {
+    font-family: 'Roboto Slab', serif;
+}
+
+button {
+    width: 100%;
+    cursor: pointer;
+}
+
+#name {
+    font-weight: bold;
+}

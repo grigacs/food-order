@@ -1,9 +1,17 @@
 <app-carousel></app-carousel>
 <div class="line"></div>
+
+<h1> Welcome in Justice League's online restaurant! </h1><br>
+
+<div class="welcome">
+  <a [routerLink]="['/order']">Take a look </a> in our selection! <br>
+  If you don't have an account - <a [routerLink]="['/register']">  Here </a> - you can register! <br>
+
 <ng-container *ngIf="sessionService.isLoggedIn()">
   {{getUser()}}
   {{user.username}}
 </ng-container>
 <ng-container *ngIf="!sessionService.isLoggedIn()">
-  No user here!
+  It seems you're not logged in! Please log in <a href="#username">at the top of the page!</a>
 </ng-container>
+</div>

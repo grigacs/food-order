@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
@@ -24,7 +25,7 @@ const appRoutes: Routes = [
     { path: 'main', component: MainComponent },
     { path: 'order', component: FoodOrderComponent },
     { path: 'register', component: RegisterComponent },
-    { path: '**', redirectTo: 'page-not-found', pathMatch: 'full'}
+    { path: '**', component: PageNotFoundComponent, pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    CarouselModule
+    CarouselModule,
+    ReactiveFormsModule
   ],
   providers: [SessionService],
   bootstrap: [AppComponent]
