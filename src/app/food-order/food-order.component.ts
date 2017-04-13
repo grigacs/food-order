@@ -22,8 +22,4 @@ export class FoodOrderComponent implements OnInit {
   ngOnInit() {
 
   }
-
-  /* showfood() {
-     this.getfoodService.getFoods().subscribe(food => this.food = food);
-  }*/
 }
