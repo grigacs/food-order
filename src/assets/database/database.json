@@ -23,7 +23,7 @@
     "foods":[
       {
         "food_id": 1,
-        "name": "inferno",
+        "name": "Inferno",
         "category": "hot",
         "picture": "/assets/pictures/hot_pizza.png",
         "basis_price": 15.5,
@@ -31,11 +31,35 @@
       },
 	  {
         "food_id": 2,
-        "name": "yeti",
+        "name": "Yeti",
         "category": "cave",
         "picture": "/assets/pictures/cave_pizza.png",
         "basis_price": 12.75,
         "size": "big"
+      },
+    {
+        "food_id": 3,
+        "name": "Blue Pearl",
+        "category": "ocean",
+        "picture": "/assets/pictures/blue.png",
+        "basis_price": 10.25,
+        "size": "medium"
+      },
+     {
+        "food_id": 4,
+        "name": "Justice League",
+        "category": "Special",
+        "picture": "/assets/pictures/special.png",
+        "basis_price": 17.35,
+        "size": "big"
+      },
+     {
+        "food_id": 5,
+        "name": "Vega-Omega",
+        "category": "vegetarian",
+        "picture": "/assets/pictures/vega.png",
+        "basis_price": 8.99,
+        "size": "small"
       }
     ],
     "orders":[

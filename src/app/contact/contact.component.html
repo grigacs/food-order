@@ -1,10 +1,33 @@
 <div class="contact">
-  <form [formGroup]="contactForm" (ngSubmit)="contact($event)">
-    <h1> Contact Us Here! </h1> <br>
-      <input formControlName="first_name" type="text"  placeholder="First Name" name="first_name" required /><br><br>
-      <input formControlName="last_name" type="text" placeholder="Last Name" name="last_name" required /><br><br>
-      <input formControlName="problem" type="text" placeholder="Problem" name="problem" required /><br><br>
-      <input formControlName="email" type="email" placeholder="Email" name="email" required/><br><br>
-      <button type="submit" class="btn btn-success btn-md"> Send </button>
+    <form (ngSubmit)="contact(contactForm)" #contactForm="ngForm">
+    <h1> <i class="fa fa-envelope-o" aria-hidden="true"></i> Contact Us Here! </h1> <br>
+        <input mdInput type="text" type="text" placeholder="First Name" name="first_name" id="first_name" required minlength="1" ngModel/> <br><br>
+        <input mdInput type="text" type="text" placeholder="Last Name" name="last_name"  id="last_name" required minlength="1" ngModel/> <br><br>
+        <input mdInput type="email" placeholder="Email" id="email" name="email" required minlength="1" ngModel/> <br><br>
+        <input mdInput type="text" type="text" placeholder="Problem / Note" name="problem" id="problem" required minlength="1" ngModel/> <br><br>   
+        <span class="error" *ngIf="!checked">{{errorMessage}} <br><br> </span>  
+        <button class="btn btn-success btn-md" *ngIf="!checked"> Check </button>
+        <span class="correct" *ngIf="checked"> All the datas are correct, send the message!</span> <br> <br>
+        <button type="submit" id="send" class="btn btn-success btn-md" (click)="staticModal.show()" *ngIf="(errorMessage == '') && (errorMessage != 'All fields must be filled out!')"> Send </button>
   </form>
 </div>
+
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">Message</h4>
+             <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide(); redirect()">
+              <span class="inform" aria-hidden="true">X</span>
+            </button>
+          </div>
+          <div class="modal-body">
+                Dear  "{{ first_name | uppercase }} {{ last_name | uppercase }}" your message has been sent!<br><br>
+                Thank you for letting us know about: "{{ problem | uppercase }}" ! <br><br>
+                We will inform you, check your emails at your email address : "{{ email | uppercase }}". <br><br><br>
+                <span class="inform">Note: After closing this window, you will be redirected to the main page.</span>
+          </div>
+        </div>
+      </div>
+</div>
+

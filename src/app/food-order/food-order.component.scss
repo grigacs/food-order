@@ -1,6 +1,6 @@
 
 img {
-    height: 100px;
+    height: 170px;
     width: 100%;
     border-bottom-color: grey;
     border-bottom-style: solid;
@@ -9,9 +9,9 @@ img {
     display: inline-block;
     border: solid black 2px;
     border-radius: 7px;
-    height: 8%;
-    width: 8%;
-    margin: 10px;
+    height: 15%;
+    width: 15%;
+    margin: 45px;
     background-color: lightblue; 
 }
 
@@ -23,6 +23,7 @@ img {
 .pizza_title {
     margin: 10px;
     text-align: center;
+    cursor: default;
 }
 
 .pizza_all {
@@ -34,6 +35,19 @@ button {
     cursor: pointer;
 }
 
-#name {
+.name {
     font-weight: bold;
+}
+
+.fa fa-cutlery{
+    margin: 20px;
+}
+
+.quantity {
+    width: 20%;
+}
+
+i:hover {
+  color: #1d9d74;
+  border-color: #1d9d74;
 }

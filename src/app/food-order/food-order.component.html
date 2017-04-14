@@ -1,12 +1,14 @@
 <div class="pizza_all">
-<span class="pizza_title"><h1> Our pizzas </h1></span>
+<span class="pizza_title"><h1> <i class="fa fa-cutlery" aria-hidden="true"></i> Our pizzas </h1></span>
 <li *ngFor="let item of food" class="pizza">
       <div>
           <span class="pizza_detail">
               <img src= '{{ item.picture }}' alt='{{ item.name }}'/> <br>
-              <label id="name">Name: </label> {{ item.name }} <br>
-              <label id="name">Category: </label> {{ item.category }} <br>
-              <label id="name"> Price:  </label> €{{ item.basis_price }} <br>
+              <span class="name">Name: </span> {{ item.name }} <br>
+              <span class="name">Category: </span> {{ item.category }} <br>
+              <span class="name"> Price:  </span> €{{ item.basis_price }} <br>
+              <span class="name"> Size:  </span> {{ item.size }} <br>
+              <span class="name"> Quantity: </span> <input type="number" min="1" max="5" class="quantity" value="0"/>  <br><br>
               <button class="btn btn-success btn-md" value='{{ item.food_id }}'> Add to cart </button>
           </span>
       </div>

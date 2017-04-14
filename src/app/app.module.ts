@@ -11,12 +11,13 @@ import { FoodOrderComponent } from './food-order/food-order.component';
 import { MainComponent } from './main/main.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
-import {RegisterComponent} from "./register/register.component";
+import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from './login/login.component';
-import {SessionService} from "./session.service";
+import { SessionService } from "./session.service";
 import { CartComponent } from './cart/cart.component';
 import { CarouselComponent } from './carousel/carousel.component';
-import {CarouselModule} from "ngx-bootstrap";
+import { CarouselModule } from "ngx-bootstrap";
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 const appRoutes: Routes = [
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     CarouselModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
   providers: [SessionService],
   bootstrap: [AppComponent]
