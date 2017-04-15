@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Users} from "./interfaces/user.interface";
 import {Foods} from "./interfaces/food.interface";
+import {StoredFoods} from "./interfaces/stored-food.interface";
 
 
 @Injectable()
@@ -8,7 +9,9 @@ export class SessionService {
 
   private loggedIn: boolean = false;
   private user: Users;
-  private foods: Array<Foods> = [];
+  private foods: Array<StoredFoods> = [];
+  private sameFoodAdded:boolean;
+  private storedFoods: StoredFoods;
 
   constructor() { }
 
@@ -35,24 +38,121 @@ export class SessionService {
   }
 
   setFood(food: Foods) {
-    let getFoods:string='';
+    let getFoods:string = '';
+    let quantity: number = 1;
+    let strFoodObjects: Array<string> = [];
+    food['quantity'] = quantity;
+
+
     if(sessionStorage.getItem('foods') !== null) {
+      this.sameFoodAdded = false;
       getFoods = sessionStorage.getItem('foods');
+      strFoodObjects = sessionStorage.getItem('foods').split('+');
+      for(let i = 0; i < strFoodObjects.length;i++){
+        if(strFoodObjects[i] != ''){
+          let currentFood = JSON.parse(strFoodObjects[i]);
+          if(food.food_id == currentFood.food_id) {
+            let tempFood = JSON.parse(strFoodObjects[i]);
+            tempFood.quantity++;
+            strFoodObjects[i] = JSON.stringify(tempFood);
+            this.sameFoodAdded = true;
+          }
+        }
+      }
+    }else{
+      console.log(food);
+      getFoods = JSON.stringify(food);
+      sessionStorage.setItem('foods', getFoods);
     }
-      console.log(getFoods);
-      getFoods = getFoods + '+' + JSON.stringify(food);
+
+    if(this.sameFoodAdded === false){
+        console.log(food);
+        getFoods = getFoods + '+' + JSON.stringify(food);
+        sessionStorage.setItem('foods', getFoods);
+    }else if(this.sameFoodAdded === true){
+        console.log(food);
+        getFoods = strFoodObjects.join('+');
+        sessionStorage.setItem('foods', getFoods);
+    }
+  }
+
+  removeFromCart(food: StoredFoods){
+    let removed: boolean = false;
+    let index: number;
+    let getFoods:string = '';
+    let strFoodObjects = sessionStorage.getItem('foods').split('+');
+    for(let i = 0; i < strFoodObjects.length;i++){
+      if(strFoodObjects[i] != ''){
+        let currentFood = JSON.parse(strFoodObjects[i]);
+        if(food.food_id == currentFood.food_id) {
+          console.log(currentFood);
+          let tempFood = JSON.parse(strFoodObjects[i]);
+          tempFood.quantity--;
+          if(tempFood.quantity > 0){
+            strFoodObjects[i] = JSON.stringify(tempFood);
+          }else{
+            removed = true;
+            index = i;
+          }
+        }
+      }
+    }
+
+
+    if(removed === true)
+      strFoodObjects.splice(index,1);
+    getFoods = strFoodObjects.join('+');
 
     sessionStorage.setItem('foods', getFoods);
   }
 
-  getFoods(): Array<Foods>{
+
+  addMoreToCart(food: StoredFoods){
+    let getFoods:string = '';
+    let strFoodObjects: Array<string> = [];
+
+    getFoods = sessionStorage.getItem('foods');
+    strFoodObjects = sessionStorage.getItem('foods').split('+');
+      for(let i = 0; i < strFoodObjects.length;i++){
+        if(strFoodObjects[i] != ''){
+          let currentFood = JSON.parse(strFoodObjects[i]);
+          if(food.food_id == currentFood.food_id) {
+            let tempFood = JSON.parse(strFoodObjects[i]);
+            tempFood.quantity++;
+            strFoodObjects[i] = JSON.stringify(tempFood);
+          }
+        }
+      }
+
+    getFoods = strFoodObjects.join('+');
+    sessionStorage.setItem('foods', getFoods);
+  }
+
+
+  removeAllFromCart(food: StoredFoods){
+    let strFoodObjects = sessionStorage.getItem('foods').split('+');
+    let index: number;
+    for(let i = 0; i < strFoodObjects.length;i++){
+      if(strFoodObjects[i] != '') {
+        let currentFood = JSON.parse(strFoodObjects[i]);
+        if (food.food_id == currentFood.food_id) {
+          strFoodObjects.splice(i,1);
+        }
+      }
+    }
+    sessionStorage.setItem('foods',strFoodObjects.join('+'));
+  }
+
+  getFoods(): Array<StoredFoods>{
     let strFoodObjects: Array<string> = [];
     if (sessionStorage.getItem('foods') !== null) {
       strFoodObjects = sessionStorage.getItem('foods').split('+');
     }
     this.foods = [];
-    for (let i = 1; i < strFoodObjects.length-1; i++) {
-      this.foods.push(JSON.parse(strFoodObjects[i]))
+    for (let i = 0; i < strFoodObjects.length; i++) {
+      if(strFoodObjects[i] != '') {
+        this.foods.push(JSON.parse(strFoodObjects[i]))
+      }
     }
     return this.foods;
   }

@@ -13,11 +13,59 @@
       </ng-container>
       <ng-container *ngIf="foods.length > 0">
           <div *ngFor="let food of foods">
-            <span>{{food.name}}</span>
-            <span>{{food.category}}</span>
-            <span>{{food.picture}}</span>
-            <span>{{food.basis_price}}</span>
+            <div class="pizza-holder">
+              <div class="pizza-img-holder">
+                <img src="{{food.picture}}" alt="pizza_img" />
+              </div>
+              <div class="pizza-data">
+                  <div class="pizza-name">
+                    <h5>{{food.name}}</h5>
+                  </div>
+                  <div class="pizza-category">
+                    <p><span>Category:</span> {{food.category}}</p>
+                  </div>
+                  <div class="pizza-size">
+                    <p><span>size:</span> {{food.size}} </p>
+                  </div>
+                  <div class="pizza-price" *ngIf="food.size == 'small'">
+                    <p><span>Price: € </span>  {{(food.basic_price * food.quantity).toFixed(2)}} </p>
+                  </div>
+                  <div class="pizza-price" *ngIf="food.size == 'medium'">
+                    <p><span>Price: € </span> {{(food.basic_price * food.quantity * 1.5).toFixed(2)}} </p>
+                  </div>
+                  <div class="pizza-price" *ngIf="food.size == 'big'">
+                    <p><span>Price: € </span> {{(food.basic_price * food.quantity * 2.2).toFixed(2)}} </p>
+                  </div>
+                <div class="pizza-count">
+                  <p><span>Count:</span> {{food.quantity}}</p>
+                </div>
+              </div>
+              <div class="pizza-change-count">
+                <div>
+                  <label for="count">Count</label><br/>
+                  <i (click)="decrement(food)" class="decrement fa fa-minus" aria-hidden="true"></i>
+                  <input type="text" value="{{food.quantity}}" id="count" disabled />
+                  <i (click)="increment(food)" class="increment fa fa-plus" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="pizza-refresh">
+                <i class="refresh fa fa-refresh" aria-hidden="true"></i> </div>
+              <div class="pizza-delete">
+                <i (click)="removeElement(food)"  class="trash fa fa-trash" aria-hidden="true"></i>
+              </div>
+            </div>
+
           </div>
+          <div class="clear"></div>
+        <div class="info-holder">
+            <div class="total-price">
+              <span> Total Price : € </span> <span class="price-color">{{totalPrice.toFixed(2)}}</span>
+            </div>
+          <div class="checkout">
+            <button class="btn btn-primary btn-md" (click)="insertOrder()">Checkout</button>
+          </div>
+          <div class="clear"></div>
+        </div>
       </ng-container>
     </div>
 </div>

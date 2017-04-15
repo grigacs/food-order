@@ -25,7 +25,7 @@
         "food_id": 1,
         "name": "Inferno",
         "category": "hot",
-        "picture": "/assets/pictures/hot_pizza.png",
+        "picture": "/assets/pictures/BBQ_Lovers_Pizza.png",
         "basic_price": 15.5,
         "size": "big"
       },
@@ -33,7 +33,7 @@
         "food_id": 2,
         "name": "Yeti",
         "category": "cave",
-        "picture": "/assets/pictures/cave_pizza.png",
+        "picture": "/assets/pictures/Classic_Meat_Lovers_Pizza.png",
         "basic_price": 12.75,
         "size": "big"
       },
