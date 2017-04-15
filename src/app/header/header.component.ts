@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Foods} from "../interfaces/food.interface";
 
 @Component({
   selector: 'app-header',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+
+  foods: Array<Foods> = [];
 
   constructor() { }
 

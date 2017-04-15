@@ -26,7 +26,7 @@
         "name": "Inferno",
         "category": "hot",
         "picture": "/assets/pictures/hot_pizza.png",
-        "basis_price": 15.5,
+        "basic_price": 15.5,
         "size": "big"
       },
 	  {
@@ -34,7 +34,7 @@
         "name": "Yeti",
         "category": "cave",
         "picture": "/assets/pictures/cave_pizza.png",
-        "basis_price": 12.75,
+        "basic_price": 12.75,
         "size": "big"
       },
     {

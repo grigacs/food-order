@@ -3,7 +3,7 @@
 }
 
 .cart-style{
-  font-size: 26px;
+  font-size: 22px;
   padding: 10px 0 0 0;
   color: #aaa;
   transition: all 0.5s ease;
@@ -11,4 +11,21 @@
 
 .cart-style:hover{
   color:#1d9d74;
+  cursor: pointer;
 }
+
+.collapse-card{
+  width: 50%;
+  position: absolute;
+  text-align: center;
+  left: 25%;
+  margin: 10px 0 0 0 !important;
+  padding: 0 !important;
+  z-index: 999;
+  box-shadow: 1px 2px 17px 0px rgba(0,0,0,0.25);
+}
+
+.alert-padding{
+  margin-bottom: 0 !important;
+}
+

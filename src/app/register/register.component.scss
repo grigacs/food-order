@@ -1,0 +1,39 @@
+label{
+  text-align: left;
+  margin: 10px 0 0 0;
+  display: block;
+}
+
+input{
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0 0 0;
+}
+
+button{
+  border-radius: 0 !important;
+  margin: 30px 0 0 15px;
+  float: right;
+}
+
+form{
+  padding: 20px;
+}
+
+.error{
+  margin: 30px 0 0 0;
+}
+
+.error_message{
+  margin: 10px 0 0 0;
+  font-size: 16px;
+  color: #CC3232;
+}
+
+.form-holder{
+  padding: 20px 80px;
+  box-shadow: 1px 2px 17px 0px rgba(0,0,0,0.25);
+  background-color: white;
+  text-align: center;
+  margin: 50px auto;
+}

@@ -1,0 +1,83 @@
+{
+  "database": {
+    "users": [
+      {
+        "user_id": 1,
+        "firstname": "Jhon",
+        "lastname": "Doe",
+        "username": "joey",
+        "password": "password",
+        "address": "New York pk Street 2",
+        "email": "user@mail.com"
+      },
+      {
+        "user_id": 2,
+        "firstname": "Mark",
+        "lastname": "Brady",
+        "username": "Boree",
+        "password": "password",
+        "address": "Poland Street 2",
+        "email": "user2@mail.com"
+      },
+      {
+        "user_id": 3,
+        "firstname": "dadas",
+        "lastname": "Dasda",
+        "username": "joeydsada",
+        "password": "dadasdsad",
+        "address": "dsadas",
+        "email": "asdasdasdasd"
+      }
+    ],
+    "foods": [
+      {
+        "food_id": 1,
+        "name": "Inferno",
+        "category": "hot",
+        "picture": "/assets/pictures/hot_pizza.png",
+        "basic_price": 15.5,
+        "size": "big"
+      },
+      {
+        "food_id": 2,
+        "name": "Yeti",
+        "category": "cave",
+        "picture": "/assets/pictures/cave_pizza.png",
+        "basic_price": 12.75,
+        "size": "big"
+      },
+      {
+        "food_id": 3,
+        "name": "Blue Pearl",
+        "category": "ocean",
+        "picture": "/assets/pictures/blue.png",
+        "basis_price": 10.25,
+        "size": "medium"
+      },
+      {
+        "food_id": 4,
+        "name": "Justice League",
+        "category": "Special",
+        "picture": "/assets/pictures/special.png",
+        "basis_price": 17.35,
+        "size": "big"
+      },
+      {
+        "food_id": 5,
+        "name": "Vega-Omega",
+        "category": "vegetarian",
+        "picture": "/assets/pictures/vega.png",
+        "basis_price": 8.99,
+        "size": "small"
+      }
+    ],
+    "orders": [
+      {
+        "user_id": 1,
+        "food_id": 1,
+        "delivered": false
+      },
+      {}
+    ]
+  }
+}

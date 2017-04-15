@@ -1,3 +1,45 @@
-<p>
-  register works!
-</p>
+<div class="form-holder col-sm-6">
+<h2>Register</h2>
+<form (ngSubmit)="register(registerForm)" #registerForm="ngForm" >
+  <label for="firstname">First Name:</label>
+  <input placeholder="First Name" type="text" id="firstname" name="firstname" required ngModel/>
+  <label for="lastname">Last Name:</label>
+  <input placeholder="Last Name" type="text" id="lastname" name="lastname" required  ngModel/>
+  <label for="u_name">Username:</label>
+  <input placeholder="Username" type="text" id="u_name" name="username" required minlength="4" ngModel/>
+  <ng-container *ngIf="uError" class="error">
+    <div class="error_message">
+      {{uErrorMessage}}
+    </div>
+  </ng-container>
+  <label for="pass">Password:</label>
+  <input placeholder="Password" type="password" id="pass" name="password" required minlength="8" ngModel/>
+  <ng-container *ngIf="passError" class="error">
+    <div class="error_message">
+      {{passErrorMessage}}
+    </div>
+  </ng-container>
+  <label for="address">Address:</label>
+  <input placeholder="Address" type="text" id="address" name="address" required ngModel/><br/>
+  <label for="mail">Email:</label>
+  <input placeholder="Email" type="email" id="mail" name="mail" required ngModel/><br/>
+  <ng-container *ngIf="error" >
+    <div class="alert alert-danger error">
+      {{errorMessage}}
+    </div>
+  </ng-container>
+  <ng-container *ngIf="insertedUser" >
+    <div class="alert alert-success error">
+      Successful registration!
+    </div>
+  </ng-container>
+  <ng-container *ngIf="insertedUser == false">
+    <div class="alert alert-danger error">
+      Something went wrong!
+    </div>
+  </ng-container>
+  <button class="btn btn-danger" type="reset" id="reset">Cancel</button>
+  <button class="btn btn-primary" type="submit" id="submit">Register</button>
+  <div class="clear"></div>
+</form>
+</div>

@@ -1,3 +1,23 @@
-<i class="fa fa-lg fa-shopping-cart cart-style" aria-hidden="true">
-<span> ( {{item.length}} item )</span>
+<i (click)="isCollapsed= !isCollapsed" class="fa fa-lg fa-shopping-cart cart-style" aria-hidden="true">
+<span      (click)="refreshCart()" > ( {{foods.length}} item )</span>
 </i>
+<div (collapsed)="collapsed($event)"
+     (expanded)="expanded($event)"
+     [collapse]="isCollapsed"
+     class="collapse-card card card-block card-header">
+    <div class="well well-lg">
+      <ng-container *ngIf="foods.length == 0">
+        <div class="alert-padding alert alert-danger">
+          Cart is empty!
+        </div>
+      </ng-container>
+      <ng-container *ngIf="foods.length > 0">
+          <div *ngFor="let food of foods">
+            <span>{{food.name}}</span>
+            <span>{{food.category}}</span>
+            <span>{{food.picture}}</span>
+            <span>{{food.basis_price}}</span>
+          </div>
+      </ng-container>
+    </div>
+</div>

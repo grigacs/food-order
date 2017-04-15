@@ -18,6 +18,10 @@ import { CartComponent } from './cart/cart.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { CarouselModule } from "ngx-bootstrap";
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { CartCollapseComponent } from './cart-collapse/cart-collapse.component';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import {Foods} from "./interfaces/food.interface";
+
 
 
 const appRoutes: Routes = [
@@ -40,7 +44,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     LoginComponent,
     CartComponent,
-    CarouselComponent
+    CarouselComponent,
+    CartCollapseComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     CarouselModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    CollapseModule,
+    ReactiveFormsModule,
   ],
   providers: [SessionService],
   bootstrap: [AppComponent]

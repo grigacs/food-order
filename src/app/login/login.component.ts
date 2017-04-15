@@ -15,7 +15,7 @@ import {SessionService} from "../session.service";
 export class LoginComponent implements OnInit {
 
   existUser: boolean;
-  user: Users[];
+  user: Users;
   loggedIn: boolean;
   errorMessage: string;
 
@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = this.sessionService.getUser();
   }
 
 
@@ -47,7 +48,7 @@ export class LoginComponent implements OnInit {
 
     this.getUserService.getUsers().subscribe(
       user => {
-        this.user = this.getUserService.login(user, form.value.username, form.value.password)
+        this.user = this.getUserService.login(user, form.value.username, form.value.password);
         if (this.user != null) {
           this.errorMessage = null;
           this.existUser = true;
@@ -56,7 +57,7 @@ export class LoginComponent implements OnInit {
           this.sessionService.setLoggedIn(true);
         } else {
           this.existUser = false;
-          this.errorMessage = "Wrong username or password!"
+          this.errorMessage = "Wrong username or password!";
           return;
         }
       },
@@ -68,9 +69,8 @@ export class LoginComponent implements OnInit {
   logout() {
     this.loggedIn = false;
     this.existUser = null;
-    this.user = [];
-    this.sessionService.setUser(null);
     this.sessionService.setLoggedIn(false);
+    sessionStorage.removeItem('user');
   }
 
 }
