@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { GetfoodService } from '../getdata/getfood.service';
 import { Foods } from './../interfaces/food.interface';
 import {SessionService} from "../session.service";
+import {StoredFoods} from "../interfaces/stored-food.interface";
 
 @Component({
   selector: 'app-food-order',
@@ -16,7 +17,7 @@ export class FoodOrderComponent implements OnInit {
 
   food: Foods[];
 
-  foods: Array<Foods>;
+  foods: Array<StoredFoods>;
 
 
     constructor(private http: Http,

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Headers} from "@angular/http";
 import {Users} from "./interfaces/user.interface";
 import {Observable} from "rxjs";
+import {StoredFoods} from "./interfaces/stored-food.interface";
 
 @Injectable()
 export class CommunicationService {
@@ -22,5 +23,16 @@ export class CommunicationService {
 
     return this.result;
   }
+
+  /*insertOrder(order: Array<StoredFoods>): Observable<string>{
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      this.result = this.http.post('http://localhost:8100/orders', JSON.stringify(order), {
+      headers: headers
+    })
+      .map(res => res.text());
+
+    return this.result;
+  }*/
 
 }
