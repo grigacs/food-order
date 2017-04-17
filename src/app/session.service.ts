@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Users} from "./interfaces/user.interface";
 import {Foods} from "./interfaces/food.interface";
 import {StoredFoods} from "./interfaces/stored-food.interface";
+import {Observable} from "rxjs";
 
 
 @Injectable()
@@ -37,9 +38,9 @@ export class SessionService {
     return this.user;
   }
 
-  setFood(food: Foods) {
+  setFood(food: Foods, quantity: number) {
     let getFoods:string = '';
-    let quantity: number = 1;
+    //let quantity: number = 1;
     let strFoodObjects: Array<string> = [];
     food['quantity'] = quantity;
 
@@ -53,7 +54,7 @@ export class SessionService {
           let currentFood = JSON.parse(strFoodObjects[i]);
           if(food.food_id == currentFood.food_id) {
             let tempFood = JSON.parse(strFoodObjects[i]);
-            tempFood.quantity++;
+            tempFood.quantity+= quantity;
             strFoodObjects[i] = JSON.stringify(tempFood);
             this.sameFoodAdded = true;
           }
@@ -68,12 +69,14 @@ export class SessionService {
     if(this.sameFoodAdded === false){
         console.log(food);
         getFoods = getFoods + '+' + JSON.stringify(food);
-        sessionStorage.setItem('foods', getFoods);
+        sessionStorage.setItem('foods', getFoods)
+
     }else if(this.sameFoodAdded === true){
         console.log(food);
         getFoods = strFoodObjects.join('+');
         sessionStorage.setItem('foods', getFoods);
     }
+
   }
 
   removeFromCart(food: StoredFoods){
@@ -141,6 +144,10 @@ export class SessionService {
       }
     }
     sessionStorage.setItem('foods',strFoodObjects.join('+'));
+  }
+
+  emptyCart(){
+    sessionStorage.setItem('foods',[''].toString().trim());
   }
 
   getFoods(): Array<StoredFoods>{

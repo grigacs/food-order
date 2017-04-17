@@ -5,6 +5,7 @@ import { GetfoodService } from '../getdata/getfood.service';
 import { Foods } from './../interfaces/food.interface';
 import {SessionService} from "../session.service";
 import {StoredFoods} from "../interfaces/stored-food.interface";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-food-order',
@@ -18,7 +19,8 @@ export class FoodOrderComponent implements OnInit {
   food: Foods[];
 
   foods: Array<StoredFoods>;
-
+  errorMessage: string;
+  error:boolean;
 
     constructor(private http: Http,
                 private getfoodService: GetfoodService,
@@ -33,12 +35,19 @@ export class FoodOrderComponent implements OnInit {
 
   getFromCart(){
       this.foods = this.sessionService.getFoods();
-      console.log(this.foods);
   }
 
-  addToCart(food: Foods){
-    console.log(food);
-    this.sessionService.setFood(food);
+  addToCart(form: NgForm, food: Foods){
+
+    if(!form.valid){
+      return;
+    }
+
+    if(form.value.quantity < 1 || form.value.quantity > 5){
+      return;
+    }
+
+    this.sessionService.setFood(food, form.value.quantity);
   }
 
 }

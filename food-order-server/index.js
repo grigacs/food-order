@@ -43,6 +43,33 @@ app.post('/', function (request, response) {
     response.end('registered');
 });
 
+app.post('/users_orders', function (request, response) {
+    console.log(request.body);
+    fs.readFile('database.json', function (err, data) {
+        var json = JSON.parse(data);
+        var users_orders = json.database.users_orders;
+        users_orders.push(request.body);
+        fs.writeFile("database.json", JSON.stringify(json));
+    });
+
+
+    response.end('successful order');
+});
+
+app.post('/guests_orders', function (request, response) {
+    console.log(request.body);
+    fs.readFile('database.json', function (err, data) {
+        var json = JSON.parse(data);
+        var guests_orders = json.database.guests_orders;
+        guests_orders.push(request.body);
+        fs.writeFile("database.json", JSON.stringify(json));
+    });
+
+
+    response.end('successful order');
+});
+
+
 app.get( '/database', function ( request, response ) {
     response.end( require('fs').readFileSync('./database.json', 'utf8'));
 });

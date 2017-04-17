@@ -3,6 +3,8 @@ import {NgForm} from "@angular/forms";
 import {CommunicationService} from "../communication.service";
 import {Users} from "../interfaces/user.interface";
 import {GetUserService} from "../getdata/getuser.service";
+import {Router} from "@angular/router";
+import {SessionService} from "../session.service";
 
 
 @Component({
@@ -23,14 +25,21 @@ export class RegisterComponent implements OnInit {
   lastId: number;
   user: Users;
   response: string;
-  insertedUser: boolean
+  insertedUser: boolean;
 
   constructor(private communicationService: CommunicationService,
-              private getUserService: GetUserService) {
-  }
+              private getUserService: GetUserService,
+              private router: Router,
+              private sessionService: SessionService) {
+
+      if(sessionService.isLoggedIn()) {
+        this.router.navigate(['/']);
+      }
+    }
 
   ngOnInit() {
   }
+
 
   register(form: NgForm) {
     this.error = false;
@@ -95,7 +104,10 @@ export class RegisterComponent implements OnInit {
               response => {
                 this.insertedUser = true;
                 this.response = response;
-                console.log(response)
+                console.log(response);
+                setTimeout(()=>{
+                  this.router.navigate(['/']);
+                },3000)
               },
               error => console.log(error),
               () => {}

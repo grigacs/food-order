@@ -4,6 +4,7 @@ import {Router, ActivatedRoute} from "@angular/router";
 import {GetUserService} from "../getdata/getuser.service";
 import {Users} from "../interfaces/user.interface";
 import {SessionService} from "../session.service";
+import {Location} from "@angular/common";
 
 
 @Component({
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private getUserService: GetUserService,
-              public sessionService: SessionService) {
+              public sessionService: SessionService,
+              public location: Location) {
 
     this.loggedIn = false;
   }
@@ -55,13 +57,15 @@ export class LoginComponent implements OnInit {
           this.loggedIn = true;
           this.sessionService.setUser(this.user);
           this.sessionService.setLoggedIn(true);
+          if (this.location.path() == '/register')
+            this.router.navigate(['/']);
         } else {
           this.existUser = false;
           this.errorMessage = "Wrong username or password!";
           return;
         }
       },
-      () => this.router.navigate([this.route])
+      () => {}
     );
   }
 

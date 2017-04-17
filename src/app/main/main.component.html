@@ -7,7 +7,7 @@
   <a [routerLink]="['/order']">Take a look </a> in our selection! <br>
   If you don't have an account - <a [routerLink]="['/register']">  Here </a> - you can register! <br>
 
-<ng-container *ngIf="sessionService.isLoggedIn()">
+<ng-container *ngIf="sessionService.isLoggedIn() && user !== null">
   {{user.username}}
 </ng-container>
 <ng-container *ngIf="!sessionService.isLoggedIn()">

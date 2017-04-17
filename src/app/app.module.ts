@@ -20,18 +20,20 @@ import { CarouselModule } from "ngx-bootstrap";
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CartCollapseComponent } from './cart-collapse/cart-collapse.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
-import {Foods} from "./interfaces/food.interface";
+import {ActivateRegisterGuard} from "./activate-register.guard";
 
 
 
 const appRoutes: Routes = [
     { path: '', component: MainComponent},
-    { path: 'contact', component: ContactComponent },
+    { path: 'contact', component: ContactComponent},
     { path: 'main', component: MainComponent },
     { path: 'order', component: FoodOrderComponent },
-    { path: 'register', component: RegisterComponent },
+    { path: 'register', component: RegisterComponent,
+      canActivate: [ActivateRegisterGuard] },
     { path: '**', component: PageNotFoundComponent, pathMatch: 'full'}
 ];
+
 
 @NgModule({
   declarations: [
@@ -58,7 +60,7 @@ const appRoutes: Routes = [
     CollapseModule,
     ReactiveFormsModule,
   ],
-  providers: [SessionService],
+  providers: [SessionService,ActivateRegisterGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
