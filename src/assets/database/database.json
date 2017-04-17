@@ -1,5 +1,5 @@
-{"database":
-  {
+{
+  "database": {
     "users": [
       {
         "user_id": 1,
@@ -42,7 +42,7 @@
         "name": "Blue Pearl",
         "category": "ocean",
         "picture": "/assets/pictures/blue.png",
-        "basis_price": 10.25,
+        "basic_price": 10.25,
         "size": "medium"
       },
      {
@@ -50,7 +50,7 @@
         "name": "Justice League",
         "category": "Special",
         "picture": "/assets/pictures/special.png",
-        "basis_price": 17.35,
+        "basic_price": 17.35,
         "size": "big"
       },
      {
@@ -58,7 +58,7 @@
         "name": "Vega-Omega",
         "category": "vegetarian",
         "picture": "/assets/pictures/vega.png",
-        "basis_price": 8.99,
+        "basic_price": 8.99,
         "size": "small"
       }
     ],
