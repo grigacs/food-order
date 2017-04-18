@@ -1,7 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -18,7 +18,7 @@ export class ContactComponent implements OnInit {
   email: string;
   checked: boolean;
 
-  constructor(private router: Router, public contactFormBuilder: FormBuilder) { }
+  constructor(private router: Router) { }
 
   contact(form: NgForm){
      if (!form.valid) {

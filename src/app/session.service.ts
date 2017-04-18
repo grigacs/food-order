@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Users} from "./interfaces/user.interface";
 import {Foods} from "./interfaces/food.interface";
 import {StoredFoods} from "./interfaces/stored-food.interface";
+import {Subject, Observable} from "rxjs";
 
 
 @Injectable()
@@ -20,7 +21,7 @@ export class SessionService {
    * check user logged in or not
    * */
   isLoggedIn() :boolean{
-    let loggedIn = sessionStorage.getItem('isLoggedIn')
+    let loggedIn = sessionStorage.getItem('isLoggedIn');
     this.loggedIn = (loggedIn === "true");
     return this.loggedIn;
   }
@@ -60,11 +61,11 @@ export class SessionService {
    * it is called by food_order page addToCart button
    *
    * */
-  setFood(food: Foods, quantity: number) {
+  setFood(food: Foods, quantity: number, size:string): void {
     let getFoods:string = '';
     let strFoodObjects: Array<string> = [];
     food['quantity'] = quantity;
-
+    food['size'] = size;
     /** if storage contains foods we get it and split into array
      *
      * after we check that food stored already, if food_id equals its true
@@ -78,10 +79,12 @@ export class SessionService {
         if(strFoodObjects[i] != ''){
           let currentFood = JSON.parse(strFoodObjects[i]);
           if(food.food_id == currentFood.food_id) {
-            let tempFood = JSON.parse(strFoodObjects[i]);
-            tempFood.quantity+= quantity;
-            strFoodObjects[i] = JSON.stringify(tempFood);
-            this.sameFoodAdded = true;
+            if(size == currentFood.size) {
+              let tempFood = JSON.parse(strFoodObjects[i]);
+              tempFood.quantity += quantity;
+              strFoodObjects[i] = JSON.stringify(tempFood);
+              this.sameFoodAdded = true;
+            }
           }
         }
       }
@@ -112,7 +115,6 @@ export class SessionService {
         getFoods = strFoodObjects.join('+');
         sessionStorage.setItem('foods', getFoods);
     }
-
   }
 
 
@@ -130,7 +132,7 @@ export class SessionService {
     for(let i = 0; i < strFoodObjects.length;i++){
       if(strFoodObjects[i] != ''){
         let currentFood = JSON.parse(strFoodObjects[i]);
-        if(food.food_id == currentFood.food_id) {
+        if(food.food_id == currentFood.food_id && food.size == currentFood.size) {
           console.log(currentFood);
           let tempFood = JSON.parse(strFoodObjects[i]);
           tempFood.quantity--;
@@ -168,7 +170,7 @@ export class SessionService {
       for(let i = 0; i < strFoodObjects.length;i++){
         if(strFoodObjects[i] != ''){
           let currentFood = JSON.parse(strFoodObjects[i]);
-          if(food.food_id == currentFood.food_id) {
+          if(food.food_id == currentFood.food_id && food.size == currentFood.size) {
             let tempFood = JSON.parse(strFoodObjects[i]);
             tempFood.quantity++;
             strFoodObjects[i] = JSON.stringify(tempFood);
@@ -192,7 +194,7 @@ export class SessionService {
     for(let i = 0; i < strFoodObjects.length;i++){
       if(strFoodObjects[i] != '') {
         let currentFood = JSON.parse(strFoodObjects[i]);
-        if (food.food_id == currentFood.food_id) {
+        if (food.food_id == currentFood.food_id && food.size == currentFood.size) {
           strFoodObjects.splice(i,1);
         }
       }

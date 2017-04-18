@@ -23,6 +23,7 @@ import { CartCollapseComponent } from './cart-collapse/cart-collapse.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import {Foods} from "./interfaces/food.interface";
 import { AdminComponent } from './admin/admin.component';
+import { ClickOutsideDirective } from './click-outside.directive';
 
 
 
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     CartComponent,
     CarouselComponent,
     CartCollapseComponent,
-    AdminComponent
+    AdminComponent,
+    ClickOutsideDirective
   ],
   imports: [
     BrowserModule,

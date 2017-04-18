@@ -9,6 +9,8 @@ export interface UsersOrders {
   user_id: number,
   food_ids: Array<number>,
   food_quantities: Array<number>,
-  delivered: boolean
+  food_sizes: Array<string>,
+  delivered: boolean,
+  totalPrice: number,
 }
 

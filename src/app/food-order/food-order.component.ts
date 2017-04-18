@@ -35,6 +35,9 @@ export class FoodOrderComponent implements OnInit {
 
   getFromCart(){
       this.foods = this.sessionService.getFoods();
+
+
+
   }
 
 
@@ -53,7 +56,7 @@ export class FoodOrderComponent implements OnInit {
       return;
     }
 
-    this.sessionService.setFood(food, form.value.quantity);
+    this.sessionService.setFood(food, form.value.quantity, form.value.size);
   }
 
 }

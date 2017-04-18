@@ -1,19 +1,37 @@
 <div class="pizza_all">
-<span class="pizza_title"><h1> <i class="fa fa-cutlery" aria-hidden="true"></i> Our pizzas </h1></span>
-<li *ngFor="let item of food" class="pizza">
-      <div>
-          <span class="pizza_detail">
-              <img src= '{{ item.picture }}' alt='{{ item.name }}'/> <br>
-              <span class="name">Name: </span> {{ item.name }} <br>
-              <span class="name">Category: </span> {{ item.category }} <br>
-              <span class="name"> Price:  </span> € {{ item.basic_price }} <br>
-              <span class="name"> Size:  </span> {{ item.size }} <br>
-              <form (ngSubmit)="addToCart(cartForm, item)" #cartForm="ngForm">
-                <label for="quantity" class="name"> Quantity: </label>
-                <input id="quantity" name="quantity" type="number" min="1" max="5" placeholder="1-5" class="quantity" value="1" required ngModel /> <br/><br/>
-                <button type="submit" class="added-food btn btn-success btn-md"> Add to cart </button>
-              </form>
+  <div class="pizza-holder">
+    <h1><i class="fa fa-cutlery" aria-hidden="true"> Our pizzas </i></h1>
+    <li *ngFor="let item of food" class="pizza">
+      <div class="pizza-info">
+      <span class="pizza_detail">
+              <img src='{{ item.picture }}' alt='{{ item.name }}'/>
+              <div class="pizza-more-info">
+                <p class="pizza-name"> {{ item.name }} </p>
+                <p class="text-size"><span class="name">Category:</span>  {{ item.category }} </p>
+                <p class="text-size"><span class="name">Top:</span>  {{ item.top }} </p>
+                <div class="format-form">
+                <form (ngSubmit)="addToCart(cartForm, item)" #cartForm="ngForm">
+                  <div class="float-form">
+                  <label for="size" class="name"> Size: </label>
+                  <select id="size" name="size" ngModel>
+                    <option value="small">small</option>
+                    <option value="medium" selected>medium</option>
+                    <option value="big">big</option>
+                  </select>
+                  <label for="quantity" class="name"> Quantity: </label>
+                  <input id="quantity" name="quantity" type="number" min="1" max="5" placeholder="1-5" class="quantity"
+                         value="1" required ngModel/> <br/><br/>
+                  </div>
+                  <div class="float-form">
+                    <button title="Add to cart" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+                  </div>
+                </form>
+                  </div>
+                <div class="clear"></div>
+                <p>  €{{ item.basic_price }} </p>
+              </div>
           </span>
       </div>
-</li>
+    </li>
+  </div>
 </div>

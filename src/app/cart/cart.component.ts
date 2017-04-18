@@ -4,6 +4,8 @@ import {StoredFoods} from "../interfaces/stored-food.interface";
 import {CommunicationService} from "../communication.service";
 import {Users} from "../interfaces/user.interface";
 import {NgForm} from "@angular/forms";
+import {Subject} from "rxjs";
+
 
 @Component({
   selector: 'app-cart',
@@ -29,7 +31,11 @@ export class CartComponent implements OnInit {
   public orderRequest: boolean = false;
 
   constructor(private sessionService: SessionService,
-              private communicationService: CommunicationService) { }
+              private communicationService: CommunicationService,
+              private elementRef: ElementRef) {
+
+
+  }
 
   ngOnInit() {}
 
@@ -37,13 +43,20 @@ export class CartComponent implements OnInit {
 
 
   public collapsed(event:any):void {
-    //console.log(event);
+    console.log(event);
   }
 
   public expanded(event:any):void {
-    //console.log(event);
+    console.log(event);
   }
 
+  Close(event:any){
+    const hostElem = this.elementRef.nativeElement;
+    console.log(hostElem.children);
+    if(!hostElem.children){
+      this.isCollapsed = !this.isCollapsed;
+    }
+  }
 
   // show foods at cart which are stored at sessionStorage
   refreshCart(){
@@ -155,7 +168,7 @@ export class CartComponent implements OnInit {
     let user: string = sessionStorage.getItem('user');
     this.userObj = JSON.parse(user);
     this.loggedUserId = this.userObj.user_id;
-    this.communicationService.insertUsersOrders(this.foods, this.loggedUserId).subscribe(
+    this.communicationService.insertUsersOrders(this.foods, this.loggedUserId, this.totalPrice).subscribe(
       result => {this.orderResult = result},
       error => {console.log(error)},
       () => {
@@ -197,7 +210,7 @@ export class CartComponent implements OnInit {
 
     this.communicationService.insertGuestsOrders(this.foods,form.value.firstname,
                                                  form.value.lastname, form.value.mail,
-                                                  form.value.address, form.value.mobile)
+                                                  form.value.address, form.value.mobile, this.totalPrice)
       .subscribe(
         result => {this.orderResult = result},
         error => {console.log(error)},
@@ -211,6 +224,11 @@ export class CartComponent implements OnInit {
           },3000)
         }
       )
+  }
+
+
+  refreshMyCart(){
+    let subject = new Subject();
   }
 
 

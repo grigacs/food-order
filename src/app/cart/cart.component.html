@@ -1,7 +1,9 @@
 <i (click)="isCollapsed= !isCollapsed" class="fa fa-lg fa-shopping-cart cart-style" aria-hidden="true">
 <span      (click)="refreshCart(); isLoggedIn()" > ( {{foods.length}} item )</span>
 </i>
-<div (collapsed)="collapsed($event)"
+<div
+    (appClickOutside)="Close($event)"
+    (collapsed)="collapsed($event)"
      (expanded)="expanded($event)"
      [collapse]="isCollapsed"
      class="collapse-card card card-block card-header">
@@ -53,7 +55,7 @@
               <div class="pizza-refresh">
                 <i class="refresh fa fa-refresh" aria-hidden="true"></i> </div>
               <div class="pizza-delete">
-                <i (click)="removeElement(food)"  class="trash fa fa-trash" aria-hidden="true"></i>
+                <i  (click)="removeElement(food)"  class="trash fa fa-trash" aria-hidden="true"></i>
               </div>
             </div>
 
@@ -78,7 +80,7 @@
               <button class="btn btn-danger btn-md" (click)="canelOrderRequest()">Cancel</button>
             </div>
             <div class="checkout">
-              <button class="btn btn-success btn-md" (click)="insertUsersOrder()">Order</button>
+              <button class="btn btn-success btn-md" (click)="insertUsersOrder()">Confirm</button>
             </div>
           </ng-container>
           <div class="clear"></div>

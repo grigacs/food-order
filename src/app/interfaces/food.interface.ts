@@ -11,5 +11,5 @@ export interface Foods {
   category: string,
   picture: string,
   basis_price: number,
-  size: string
+  top: string
 }
