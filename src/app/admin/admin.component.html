@@ -1,0 +1,25 @@
+<div class="title"><span> List of Users </span>
+
+<p class="tabhead">
+   <span class="username"> Username </span>
+   <span class="password"> Password </span>
+   <span class="firstname"> First Name </span>
+   <span class="lastname">  Last Name </span>
+   <span class="email">  Email </span>
+   <span class="address">  Address </span>
+</p>
+</div>
+<br>
+
+<div class="datas">
+ <p *ngFor="let user of users"> 
+   <span class="username"> {{ user.username }} </span>
+   <span class="password">   {{ user.password }} </span>
+   <span class="firstname">  {{ user.firstname }} </span>
+   <span class="lastname">  {{ user.lastname }} </span>
+   <span class="email">  {{ user.email }} </span>
+   <span class="address">  {{ user.address }} </span>
+   <br><hr>
+  </p>
+  <br>
+</div>

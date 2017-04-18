@@ -16,8 +16,11 @@
 
 <ng-container *ngIf="sessionService.isLoggedIn()">
   <button class="btn btn-success btn-md logout" (click)="logout()">Logout</button>
-    <span class="uname">
+    <span class="uname" *ngIf="sessionService.user.username != 'admin'">
       Welcome {{user.username}}!
     </span>
+    <span class="uname" *ngIf="sessionService.user.username == 'admin'">
+      Welcome <a [routerLink]="['/admin']"> {{user.username}} </a>
+      </span>
   </ng-container>
 

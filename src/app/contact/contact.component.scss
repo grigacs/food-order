@@ -1,7 +1,7 @@
 .contact {
     font-family: 'Roboto Slab', serif;
     text-align: center;
-    margin: 20px;
+    margin: 15px;
     cursor: default;
 }
 
@@ -23,7 +23,38 @@ h4 {
     font-weight: bold;
 }
 
+h1 {
+    font-weight: bold;
+}
 .inform {
      color:#CC3232;
      font-weight: bold;
+}
+
+.localaddress {
+    display: -webkit-flex;
+    display: flex;   
+    font-size: 30px;     
+    font-weight: bold;
+    text-align: center;
+}
+
+.local { 
+    font-weight: italic;
+    font-size: 15px;
+    text-align: center;
+}
+
+.map {
+    display: block;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
+
+.flex-item {
+    width: 250px;
+    height: 80px;
+    margin-left: 300px;
+    margin-top: 10px;
 }

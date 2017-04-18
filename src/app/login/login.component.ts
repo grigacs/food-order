@@ -55,6 +55,9 @@ export class LoginComponent implements OnInit {
           this.loggedIn = true;
           this.sessionService.setUser(this.user);
           this.sessionService.setLoggedIn(true);
+            if(this.user.username === 'admin'){
+              this.router.navigate(['/admin']);
+            }
         } else {
           this.existUser = false;
           this.errorMessage = "Wrong username or password!";
@@ -71,6 +74,7 @@ export class LoginComponent implements OnInit {
     this.existUser = null;
     this.sessionService.setLoggedIn(false);
     sessionStorage.removeItem('user');
+    this.router.navigate(['/main']);
   }
 
 }

@@ -1,13 +1,13 @@
 <div class="contact">
     <form (ngSubmit)="contact(contactForm)" #contactForm="ngForm">
     <h1> <i class="fa fa-envelope-o" aria-hidden="true"></i> Contact Us Here! </h1> <br>
-        <input mdInput type="text" type="text" placeholder="First Name" name="first_name" id="first_name" required minlength="1" ngModel/> <br><br>
-        <input mdInput type="text" type="text" placeholder="Last Name" name="last_name"  id="last_name" required minlength="1" ngModel/> <br><br>
-        <input mdInput type="email" placeholder="Email" id="email" name="email" required minlength="1" ngModel/> <br><br>
-        <input mdInput type="text" type="text" placeholder="Problem / Note" name="problem" id="problem" required minlength="1" ngModel/> <br><br>   
-        <span class="error" *ngIf="!checked">{{errorMessage}} <br><br> </span>  
+        <input mdInput type="text" type="text" placeholder="First Name" name="first_name" id="first_name" required minlength="1" ngModel/>
+        <input mdInput type="text" type="text" placeholder="Last Name" name="last_name"  id="last_name" required minlength="1" ngModel/>
+        <input mdInput type="email" placeholder="Email" id="email" name="email" required minlength="1" ngModel/><br><br>  
+        <textarea rows="4" cols="72" mdInput type="text" type="textarea" placeholder="Problem / Note" name="problem" id="problem" required minlength="1" ngModel> </textarea> <br>  
+        <span class="error" *ngIf="!checked">{{errorMessage}} <br> </span>  
         <button class="btn btn-success btn-md" *ngIf="!checked"> Check </button>
-        <span class="correct" *ngIf="checked"> All the datas are correct, send the message!</span> <br> <br>
+        <span class="correct" *ngIf="checked"> All the datas are correct, send the message!</span> <br>
         <button type="submit" id="send" class="btn btn-success btn-md" (click)="staticModal.show()" *ngIf="(errorMessage == '') && (errorMessage != 'All fields must be filled out!')"> Send </button>
   </form>
 </div>
@@ -31,3 +31,19 @@
       </div>
 </div>
 
+<hr>
+ <div class="map"> <i class="fa fa-map-marker" aria-hidden="true"></i> Google Maps  <br>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2759.09335509877!2d20.147168615838353!3d46.248371888795944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4744886fc6cda3e3%3A0x97c72b5331010bac!2zU3plZ2VkLCBEw7NtIHTDqXIsIDY3MjA!5e0!3m2!1shu!2shu!4v1492454888903" width="1300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+ </div> 
+<hr>
+   <div class="localaddress">
+      <div class="flex-item"><i class="fa fa-home" aria-hidden="true"></i> Address <br>
+          <span class="local"> 6720, Szeged Dom Square 20.</span>
+      </div>
+       <div class="flex-item"> <i class="fa fa-phone" aria-hidden="true"></i> Phone <br>
+           <span class="local"> +36 30 123 4567 </span>
+       </div>
+      <div class="flex-item"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email <br>
+           <span class="local"> info@justice-league.com</span>
+      </div>
+  </div> 

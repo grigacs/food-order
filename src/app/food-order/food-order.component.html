@@ -4,11 +4,11 @@
       <div>
           <span class="pizza_detail">
               <img src= '{{ item.picture }}' alt='{{ item.name }}'/> <br>
-              <span class="name">Name: </span> {{ item.name }} <br>
-              <span class="name">Category: </span> {{ item.category }} <br>
+              <span class="name"> Name: </span> {{ item.name }} <br>
+              <span class="name"> Category: </span> {{ item.category }} <br>
               <span class="name"> Price:  </span> € {{ item.basic_price }} <br>
               <span class="name"> Size:  </span> {{ item.size }} <br>
-              <span class="name"> Quantity: </span> <input type="number" min="1" max="5" class="quantity" value="0"/>  <br><br>
+              <span class="name"> Quantity: </span> <input type="number" min="0" max="5" class="quantity" value="0"/>  <br><br>
             <button (click)="addToCart(item)" class="added-food btn btn-success btn-md"> Add to cart </button>
           </span>
       </div>

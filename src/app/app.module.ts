@@ -21,6 +21,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { CartCollapseComponent } from './cart-collapse/cart-collapse.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import {Foods} from "./interfaces/food.interface";
+import { AdminComponent } from './admin/admin.component';
 
 
 
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     { path: 'main', component: MainComponent },
     { path: 'order', component: FoodOrderComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'admin', component: AdminComponent },
     { path: '**', component: PageNotFoundComponent, pathMatch: 'full'}
 ];
 
@@ -45,7 +47,8 @@ const appRoutes: Routes = [
     LoginComponent,
     CartComponent,
     CarouselComponent,
-    CartCollapseComponent
+    CartCollapseComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
