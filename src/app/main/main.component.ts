@@ -11,10 +11,15 @@ export class MainComponent implements OnInit {
 
   user: Users;
 
-  constructor(public sessionService: SessionService) { }
+  /**
+   * check user logged in when enter the page
+   * */
+  constructor(public sessionService: SessionService) {
+    this.user = this.sessionService.getUser();
+  }
 
   ngOnInit() {
-    this.user = this.sessionService.getUser();
+
   }
 
   showUser(){

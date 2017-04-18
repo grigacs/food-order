@@ -19,6 +19,14 @@ export class CommunicationService {
   constructor(private http: Http) {
   }
 
+
+  /**
+   * @param user
+   * @returns {Observable<string>}
+   *
+   * registration
+   * we send user object stringify to the server for processing and after insert to database
+   */
   insertUser(user: Users) : Observable<string> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -30,6 +38,12 @@ export class CommunicationService {
     return this.result;
   }
 
+
+  /**
+   * insert UserOrders
+   * we send UsersOrders object stringify to the server for processing and after insert to database
+   * save user_id food_ids (because can multiple food order) , quantities of foods and delivered false (it means ordered but not finished yet)
+   */
   insertUsersOrders(order: Array<StoredFoods>, userId: number): Observable<string>{
       this.foodIds = [];
       this.foodQueantites = [];
@@ -53,6 +67,11 @@ export class CommunicationService {
     return this.result;
   }
 
+  /**
+   * insert UserOrders
+   * we send UsersOrders object stringify to the server for processing and after insert to database
+   * save user information from form, food_ids (because can multiple food order) , quantities of foods and delivered false (it means ordered but not finished yet)
+   */
   insertGuestsOrders(order: Array<StoredFoods>,firstname: string,
                     lastname: string, mail: string, address:string, mobile: string): Observable<string>{
     this.foodIds = [];

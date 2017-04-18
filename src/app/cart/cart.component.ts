@@ -4,7 +4,6 @@ import {StoredFoods} from "../interfaces/stored-food.interface";
 import {CommunicationService} from "../communication.service";
 import {Users} from "../interfaces/user.interface";
 import {NgForm} from "@angular/forms";
-import {ModalModule} from "ngx-bootstrap";
 
 @Component({
   selector: 'app-cart',
@@ -29,8 +28,7 @@ export class CartComponent implements OnInit {
   public successOrder: boolean;
   public orderRequest: boolean = false;
 
-  constructor(private elementRef: ElementRef,
-              private sessionService: SessionService,
+  constructor(private sessionService: SessionService,
               private communicationService: CommunicationService) { }
 
   ngOnInit() {}
@@ -46,18 +44,21 @@ export class CartComponent implements OnInit {
     //console.log(event);
   }
 
-  collapseClose(){
-    if(!this.elementRef.nativeElement.contains(event.target))
-      if(!this.isCollapsed)
-        this.isCollapsed = true;
-  }
 
+  // show foods at cart which are stored at sessionStorage
   refreshCart(){
       this.foods = this.sessionService.getFoods();
       this.setPrice(this.foods);
       console.log(this.foods);
   }
 
+  /** receive an array which hold type of StoredFoods items , StoredFood is an object (you can see the structure at StoredFood interface)
+   *
+   * @param foods
+   * @returns {number}
+   *
+   * food price depends from size , TotalPrice equals all stored foods price
+   */
   setPrice(foods: Array<StoredFoods>): number{
     let multiply = 0;
     let price = 0;
@@ -76,6 +77,11 @@ export class CartComponent implements OnInit {
     return this.totalPrice;
   }
 
+  /**
+   * receive an Object which type is StoredFood , all that type of food remove from cart
+   * and store to this.foods
+   * after again calculate TotalPrice and save this.totalPrice
+   * */
   removeElement(food: StoredFoods){
     this.sessionService.removeAllFromCart(food);
     this.foods = this.sessionService.getFoods();
@@ -90,33 +96,61 @@ export class CartComponent implements OnInit {
     this.quantity = quantity;
   }
 
+
+  /**
+   * receive an Object which type is StoredFood , and decrement decrement the quantity from this type of food
+   * and store to this.foods
+   * after again calculate TotalPrice and save this.totalPrice
+   * */
   decrement(food: StoredFoods) {
     this.sessionService.removeFromCart(food);
     this.foods = this.sessionService.getFoods();
     this.totalPrice = this.setPrice(this.foods);
   }
 
+
+  /**
+   * receive an Object which type is StoredFood , and decrement increment the quantity from this type of food
+   * and store to this.foods
+   * after again calculate TotalPrice and save this.totalPrice
+   * */
   increment(food: StoredFoods) {
     this.sessionService.addMoreToCart(food);
     this.foods = this.sessionService.getFoods();
     this.totalPrice = this.setPrice(this.foods);
   }
 
+
+  /**
+   * get user from session if, null no user logged in
+   * */
   isLoggedIn(){
     this.user = this.sessionService.getUser();
     this.loggedIn = this.user != null;
-    console.log(this.loggedIn)
   }
 
 
+  /**
+   * after click checkout orderRequest be true, after the user can confirm his order
+   * */
   sendOrderRequest(){
     this.orderRequest = true;
   }
 
+  /**
+   * if user canceled order
+   * */
   canelOrderRequest(){
     this.orderRequest = false;
   }
 
+  /**
+   *  Two way have for order (logged user or guest)
+   *  first time get the user from storage and call the function with the cart content and the logged user id
+   *
+   *  if observable complete: we show information to the user from the result e.q(successful order) and wait three sec
+   *  after remove the cart content and close
+   * */
   insertUsersOrder() {
     let user: string = sessionStorage.getItem('user');
     this.userObj = JSON.parse(user);
@@ -136,6 +170,14 @@ export class CartComponent implements OnInit {
     );
   }
 
+
+  /**
+   *  If guest do order
+   *  first od all the guest need to add his information in the form
+   *  after check the form was valid or not
+   *  if valid send the order , show information from result
+   *  after remove the cart content and close
+   * */
   insertGuestOrder(form: NgForm, lgModal) {
     this.error = false;
 

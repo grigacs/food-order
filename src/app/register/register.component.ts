@@ -32,6 +32,9 @@ export class RegisterComponent implements OnInit {
               private router: Router,
               private sessionService: SessionService) {
 
+      /**
+     * if user logged in navigate out from register
+     * */
       if(sessionService.isLoggedIn()) {
         this.router.navigate(['/']);
       }
@@ -40,7 +43,11 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-
+  /**
+   * check the form
+   * if everything is ok, check username exist or not if exist show it and return
+   * else insert the user into database and show the user the result (inserted or error)
+   * */
   register(form: NgForm) {
     this.error = false;
     this.uError = false;

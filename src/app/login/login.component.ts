@@ -31,7 +31,12 @@ export class LoginComponent implements OnInit {
     this.user = this.sessionService.getUser();
   }
 
-
+  /**
+   * First of all validate login from
+   * After subscribe te getUsers which contains the users
+   * we pass the user , username and password to the getUserService.login if username and password exist return the user else show error message
+   *
+   * */
   login(form: NgForm) {
 
 
@@ -68,7 +73,10 @@ export class LoginComponent implements OnInit {
     );
   }
 
-
+ /**
+  * when user logged out the parameters set to default value
+  * and delete user from session
+ * */
   logout() {
     this.loggedIn = false;
     this.existUser = null;
