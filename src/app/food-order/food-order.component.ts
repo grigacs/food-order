@@ -37,6 +37,12 @@ export class FoodOrderComponent implements OnInit {
       this.foods = this.sessionService.getFoods();
   }
 
+
+  /**
+   * receive two parameter first the form second the food object
+   * check form is valid or not
+   * if form is valid we set the food into session with the quantity value
+   * */
   addToCart(form: NgForm, food: Foods){
 
     if(!form.valid){

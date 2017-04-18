@@ -14,6 +14,11 @@ export class GetUserService {
   result: Observable<Users[]>;
   id: number;
 
+  /**
+   * Return Observable who contains Users array , the structure is in the Users interface
+   * With http get we get the json from server
+   * map from database.json into the user array
+   * */
   getUsers(): Observable<Users[]>{
 
    this.result = this.http.get('http://localhost:8100/database')
@@ -25,6 +30,10 @@ export class GetUserService {
     return this.result;
   }
 
+
+  /**
+   * get the last id from users , for register , if register a new user must increment the last id and because it is need to be unique
+   * */
   getLastId(users: Users[]) : number{
     for(let i = 0;i < users.length;i++){
         this.id = users[i].user_id;
@@ -33,6 +42,11 @@ export class GetUserService {
   }
 
 
+  /**
+   * at the login we need to check exist this user with this username and password or not
+   * if exist return user Object
+   * else return null
+   * */
   login(users: Users[], username: string, password: string) : Users{
     for(let i = 0;i < users.length;i++){
       if(username == users[i].username && users[i].password == password){

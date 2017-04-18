@@ -11,6 +11,7 @@
           Cart is empty!
         </div>
       </ng-container>
+      <!-- List ordered foods -->
       <ng-container *ngIf="foods.length > 0">
           <div *ngFor="let food of foods">
             <div class="pizza-holder">
@@ -27,6 +28,7 @@
                   <div class="pizza-size">
                     <p><span>size:</span> {{food.size}} </p>
                   </div>
+                  <!-- Check ordered food size for price -->
                   <div class="pizza-price" *ngIf="food.size == 'small'">
                     <p><span>Price: € </span>  {{(food.basic_price * food.quantity).toFixed(2)}} </p>
                   </div>
