@@ -1,5 +1,5 @@
 <i (click)="isCollapsed= !isCollapsed" class="fa fa-lg fa-shopping-cart cart-style" aria-hidden="true">
-<span      (click)="refreshCart()" > ( {{foods.length}} item )</span>
+<span      (click)="refreshCart(); isLoggedIn()" > ( {{foods.length}} item )</span>
 </i>
 <div (collapsed)="collapsed($event)"
      (expanded)="expanded($event)"
@@ -61,11 +61,70 @@
             <div class="total-price">
               <span> Total Price : € </span> <span class="price-color">{{totalPrice.toFixed(2)}}</span>
             </div>
+          <ng-container *ngIf="loggedIn === false">
           <div class="checkout">
-            <button class="btn btn-primary btn-md" (click)="insertOrder()">Checkout</button>
+            <button class="btn btn-primary btn-md" (click)="lgModal.show(); isCollapsed= !isCollapsed">Checkout</button>
           </div>
+          </ng-container>
+          <ng-container *ngIf="loggedIn === true && orderRequest === false">
+            <div class="checkout">
+              <button class="btn btn-primary btn-md" (click)="sendOrderRequest()">Checkout</button>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="loggedIn === true && orderRequest === true">
+            <div class="checkout">
+              <button class="btn btn-danger btn-md" (click)="canelOrderRequest()">Cancel</button>
+            </div>
+            <div class="checkout">
+              <button class="btn btn-success btn-md" (click)="insertUsersOrder()">Order</button>
+            </div>
+          </ng-container>
           <div class="clear"></div>
+          <div *ngIf="successOrder" class="alert alert-success error">
+            <strong><i class="fa fa-check-circle" aria-hidden="true"></i></strong>  {{orderResult}}!
+          </div>
         </div>
       </ng-container>
     </div>
+</div>
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left"><i class="fa fa-1x fa-info-circle" aria-hidden="true"></i> Enter Your Information</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <form (ngSubmit)="insertGuestOrder(orderForm, lgModal)" #orderForm="ngForm">
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="firstname" placeholder="Enter Your First Name" required ngModel/>
+            <label for="lastname">Last Name:</label>
+            <input type="text" id="lastname" name="lastname" placeholder="Enter Your Last Name" required  ngModel/>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" placeholder="Enter Your Address" required ngModel/>
+            <label for="mail">Email:</label>
+            <input type="text" id="mail" name="mail" placeholder="Enter your email (example@domain.com)" required ngModel/>
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" id="mobile" name="mobile" placeholder="Enter your mobile number (+36/ 70 456 2132)"/>
+
+            <ng-container *ngIf="error" >
+              <div class="alert alert-danger error">
+                <strong><i class="fa fa-1x fa-exclamation-circle" aria-hidden="true"></i></strong>  {{errorMessage}}
+              </div>
+            </ng-container>
+            <ng-container *ngIf="successOrder" >
+              <div class="alert alert-success error">
+                <strong><i class="fa fa-check-circle" aria-hidden="true"></i></strong>  {{orderResult}}!
+              </div>
+            </ng-container>
+            <button name="reset" (click)="lgModal.hide()" class="btn btn-danger btn-md" type="reset">Cancel</button>
+            <button name="submit" class="btn btn-success btn-md" type="submit">Order</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

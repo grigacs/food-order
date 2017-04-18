@@ -1,8 +1,10 @@
 import {Component, OnInit, ElementRef} from '@angular/core';
-import { Orders } from "../interfaces/order.interface";
 import {SessionService} from "../session.service";
 import {StoredFoods} from "../interfaces/stored-food.interface";
 import {CommunicationService} from "../communication.service";
+import {Users} from "../interfaces/user.interface";
+import {NgForm} from "@angular/forms";
+import {ModalModule} from "ngx-bootstrap";
 
 @Component({
   selector: 'app-cart',
@@ -14,10 +16,18 @@ export class CartComponent implements OnInit {
 
   foods: Array<StoredFoods> = [];
 
-  orders: Orders[];
   public isCollapsed:boolean = true;
   public quantity: number;
   public totalPrice: number;
+  public userObj: Users;
+  public loggedUserId : number;
+  public loggedIn: boolean;
+  public user: Users;
+  public error: boolean;
+  public errorMessage: string;
+  public orderResult: string;
+  public successOrder: boolean;
+  public orderRequest: boolean = false;
 
   constructor(private elementRef: ElementRef,
               private sessionService: SessionService,
@@ -46,7 +56,6 @@ export class CartComponent implements OnInit {
       this.foods = this.sessionService.getFoods();
       this.setPrice(this.foods);
       console.log(this.foods);
-
   }
 
   setPrice(foods: Array<StoredFoods>): number{
@@ -93,10 +102,76 @@ export class CartComponent implements OnInit {
     this.totalPrice = this.setPrice(this.foods);
   }
 
-
-  insertOrder(){
-    //this.communicationService.insertOrder(this.foods)
+  isLoggedIn(){
+    this.user = this.sessionService.getUser();
+    this.loggedIn = this.user != null;
+    console.log(this.loggedIn)
   }
+
+
+  sendOrderRequest(){
+    this.orderRequest = true;
+  }
+
+  canelOrderRequest(){
+    this.orderRequest = false;
+  }
+
+  insertUsersOrder() {
+    let user: string = sessionStorage.getItem('user');
+    this.userObj = JSON.parse(user);
+    this.loggedUserId = this.userObj.user_id;
+    this.communicationService.insertUsersOrders(this.foods, this.loggedUserId).subscribe(
+      result => {this.orderResult = result},
+      error => {console.log(error)},
+      () => {
+        this.successOrder = true;
+        setTimeout(() => {
+          this.isCollapsed = !this.isCollapsed;
+          this.orderRequest = false;
+          this.sessionService.emptyCart();
+          this.successOrder = false;
+        },3000)
+      }
+    );
+  }
+
+  insertGuestOrder(form: NgForm, lgModal) {
+    this.error = false;
+
+    if (!form.valid) {
+
+      if (form.value.firstname == '' ||
+        form.value.lastname == '' ||
+        form.value.mail == '' ||
+        form.value.address == '' ||
+        form.value.mobile == '') {
+        this.error = true;
+        this.errorMessage = 'All fields must be filled out!';
+      }
+      return;
+    }
+
+
+    this.communicationService.insertGuestsOrders(this.foods,form.value.firstname,
+                                                 form.value.lastname, form.value.mail,
+                                                  form.value.address, form.value.mobile)
+      .subscribe(
+        result => {this.orderResult = result},
+        error => {console.log(error)},
+        () => {
+          this.successOrder = true;
+          setTimeout(() => {
+            lgModal.hide();
+            this.orderRequest = false;
+            this.sessionService.emptyCart();
+            this.successOrder = false;
+          },3000)
+        }
+      )
+  }
+
+
 
 
 

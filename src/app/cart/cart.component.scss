@@ -176,6 +176,26 @@ span {
   font-weight: 700;
 }
 
+form > label{
+  text-align: left;
+  margin: 10px 0 0 0;
+  display: block;
+}
+
+form > input{
+  text-align: left;
+  padding: 10px;
+  margin: 10px 0 0 0;
+  display: block;
+  width: 100%;
+}
+
+form > button{
+  margin: 20px 0 20px 10px;
+  border-radius: 0 !important;
+  float: right;
+}
+
 button{
   border-radius: 0 !important;
 }
@@ -225,4 +245,8 @@ p{
 
 .price-color{
   color: #1d9d74;
+}
+
+.error{
+  margin: 30px 0 0 0;
 }
