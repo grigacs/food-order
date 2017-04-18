@@ -1,3 +1,4 @@
+import { AdminGuard } from './admin.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -31,7 +32,7 @@ const appRoutes: Routes = [
     { path: 'main', component: MainComponent },
     { path: 'order', component: FoodOrderComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'admin', component: AdminComponent },
+    { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
     { path: '**', component: PageNotFoundComponent, pathMatch: 'full'}
 ];
 
@@ -61,7 +62,7 @@ const appRoutes: Routes = [
     CollapseModule,
     ReactiveFormsModule,
   ],
-  providers: [SessionService],
+  providers: [SessionService, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

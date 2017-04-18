@@ -4,13 +4,14 @@ import { Router , ActivatedRoute } from '@angular/router';
 import { GetUserService } from './../getdata/getuser.service';
 import { SessionService } from './../session.service';
 import { Users } from './../interfaces/user.interface';
+import { AdminGuard } from './../admin.guard';
 
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss'],
-  providers: [GetUserService, SessionService]
+  providers: [GetUserService, SessionService, AdminGuard]
 })
 export class AdminComponent implements OnInit {
 

@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
 export class PageNotFoundComponent implements OnInit {
 
   constructor(private router: Router) {
-    this.router.navigate( ['/']);
+    //this.router.navigate( ['/']);
   }
 
   ngOnInit() {
