@@ -16,6 +16,11 @@ import {NgForm} from "@angular/forms";
 
 export class FoodOrderComponent implements OnInit {
 
+    /** Created by Richard Asztalos
+     *           This component gives back stored foods from database which will be listed.
+     *           Cart functions were created by Gergely Der.
+    */
+
   food: Foods[];
 
   foods: Array<StoredFoods>;

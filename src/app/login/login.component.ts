@@ -31,11 +31,13 @@ export class LoginComponent implements OnInit {
     this.user = this.sessionService.getUser();
   }
 
-  /**
+  /** Created by Gergely Der, associate member: Richard Asztalos
    * First of all validate login from
    * After subscribe te getUsers which contains the users
-   * we pass the user , username and password to the getUserService.login if username and password exist return the user else show error message
-   *
+   * We pass the user , username and password to the getUserService.login. 
+   * If username and password exist return the user else show error message
+   * Here we can decide from the logged user if he/she is an admin or a normal user. 
+   * Admin has another privilage (can list out users), so he/she will be redirected to the admin page.
    * */
   login(form: NgForm) {
 

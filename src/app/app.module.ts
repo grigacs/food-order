@@ -26,7 +26,9 @@ import { AdminComponent } from './admin/admin.component';
 import { ClickOutsideDirective } from './click-outside.directive';
 
 
-
+  /** Routing has been created by Richard Asztalos
+   *  Simple routing for the components. Admin route has a guard (for more details check AdminGuard and AdminComponent)
+   */
 const appRoutes: Routes = [
     { path: '', component: MainComponent},
     { path: 'contact', component: ContactComponent },

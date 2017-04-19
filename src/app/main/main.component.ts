@@ -11,9 +11,9 @@ export class MainComponent implements OnInit {
 
   user: Users;
 
-  /**
-   * check user logged in when enter the page
-   * */
+  /**  Created by Richard Asztalos
+   *   Here we can check if the user is logged in when enter the page. (session)
+   */
   constructor(public sessionService: SessionService) {
     this.user = this.sessionService.getUser();
   }

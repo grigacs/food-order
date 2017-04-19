@@ -10,6 +10,12 @@ export class GetfoodService {
 
   constructor(private http: Http, private sessionService:SessionService) { }
 
+    /** Created by Richard Asztalos
+     *           This service helps to the food-order component to list out the stored foods.
+     *           It connects to the database (which is on the server - at localhost:8100).
+     *           After it returns an Observable with the foods and map the result into a food array.
+    */
+
   jsondata: Object;
   foods: Object;
   food: Foods[];

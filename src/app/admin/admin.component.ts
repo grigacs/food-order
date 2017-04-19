@@ -15,6 +15,12 @@ import { AdminGuard } from './../admin.guard';
 })
 export class AdminComponent implements OnInit {
 
+  /** Created by Richard Asztalos
+   *           Users which are stored in database will be listed by admin.
+   *           This component helps to create admin menu (here we need to subscribe to list users).
+   *           Admin route has been guarded by AdminGuard.
+  */
+
   users: Users[];
 
     constructor(private http: Http,

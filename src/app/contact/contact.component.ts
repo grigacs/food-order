@@ -11,6 +11,14 @@ import { FormBuilder } from '@angular/forms';
 export class ContactComponent implements OnInit {
   @HostBinding('class') class = 'contact';
 
+    /**  Created by Richard Asztalos
+     *           This component validates the form which has been sent from the HTML.
+     *           Component can be used as a guest or admin or normal user. 
+     *           After submitting the form it checks whether the incoming data is correct or not and sends back a message.
+     *           If it is not, then errorMessage will show up, else form will be submitted.
+     *           It also has a function which redirects the user to the main page when he/she is done.
+    */
+
   errorMessage: string;
   first_name: string;
   last_name: string;

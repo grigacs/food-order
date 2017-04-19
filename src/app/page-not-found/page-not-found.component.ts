@@ -8,8 +8,12 @@ import {Router} from "@angular/router";
 })
 export class PageNotFoundComponent implements OnInit {
 
+  /** Created by Richard Asztalos
+   *  This component has only that function if the URL has been manipulated then it will return with a 404 error page.
+   */
+
   constructor(private router: Router) {
-    //this.router.navigate( ['/']);
+
   }
 
   ngOnInit() {

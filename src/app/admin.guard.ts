@@ -9,6 +9,14 @@ import { SessionService } from './session.service';
 export class AdminGuard implements CanActivate {
   constructor(private sessionService: SessionService, private router: Router){}
 
+  /** Created by Richard Asztalos
+   *   This guard helps to defend the admin route.
+   *   It checks if the user is logged in.
+   *   If it is then checks the session and decides if the user is admin or not.
+   *   If the user is a normal user or a guest (not logged in) then will get an error page.
+   *   If admin, then will be redirected to the admin page.
+   */
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
