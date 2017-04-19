@@ -10,25 +10,30 @@
                 <p class="text-size"><span class="name">Category:</span>  {{ item.category }} </p>
                 <p class="text-size"><span class="name">Top:</span>  {{ item.top }} </p>
                 <div class="format-form">
-                <form (ngSubmit)="addToCart(cartForm, item)" #cartForm="ngForm">
+                <form (change)="onChange($event.target, item.food_id, item, quantity.value)"
+                     (ngSubmit)="addToCart(cartForm, item, pop)" #cartForm="ngForm">
                   <div class="float-form">
-                  <label for="size" class="name"> Size: </label>
-                  <select id="size" name="size" ngModel>
-                    <option value="small">small</option>
-                    <option value="medium" selected>medium</option>
-                    <option value="big">big</option>
+                  <label  class="name"> Size: </label>
+                  <select #size  name="size" ngModel>
+                    <option *ngFor="let size of sizes" value="{{size}}" [selected]="size == 'small'">{{size}}</option>
                   </select>
-                  <label for="quantity" class="name"> Quantity: </label>
-                  <input id="quantity" name="quantity" type="number" min="1" max="5" placeholder="1-5" class="quantity"
-                         value="1" required ngModel/> <br/><br/>
+                  <label class="name"> Quantity: </label>
+                  <input (change)="onChange(size, item.food_id, item, quantity.value)" #quantity  name="quantity" type="number" min="1" max="5" placeholder="1-5" class="quantity"
+                          value="1" required ngModel/> <br/><br/>
                   </div>
                   <div class="float-form">
-                    <button title="Add to cart" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+                    <button
+                      #pop="bs-popover"
+                      placement="bottom"
+                      popover="{{message}}"
+                      title="Add to cart"
+                            type="submit"
+                            (click)="hide(pop)"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
                   </div>
                 </form>
                   </div>
                 <div class="clear"></div>
-                <p>  €{{ item.basic_price }} </p>
+                <p>  €{{(item.basic_price).toFixed(2)}} </p>
               </div>
           </span>
       </div>

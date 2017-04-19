@@ -29,12 +29,14 @@ export class CartComponent implements OnInit {
   public orderResult: string;
   public successOrder: boolean;
   public orderRequest: boolean = false;
+  public pizzaCount: number;
+  public totalCount: number;
 
   constructor(private sessionService: SessionService,
               private communicationService: CommunicationService,
               private elementRef: ElementRef) {
-
-
+                this.pizzaCount = 0;
+                this.totalCount = 0;
   }
 
   ngOnInit() {}
@@ -42,27 +44,18 @@ export class CartComponent implements OnInit {
 
 
 
-  public collapsed(event:any):void {
-    console.log(event);
-  }
+  public collapsed(event:any):void {}
 
-  public expanded(event:any):void {
-    console.log(event);
-  }
+  public expanded(event:any):void {}
 
-  Close(event:any){
-    const hostElem = this.elementRef.nativeElement;
-    console.log(hostElem.children);
-    if(!hostElem.children){
-      this.isCollapsed = !this.isCollapsed;
-    }
+  Close(event: Event){
+    this.isCollapsed = true;
   }
 
   // show foods at cart which are stored at sessionStorage
   refreshCart(){
       this.foods = this.sessionService.getFoods();
       this.setPrice(this.foods);
-      console.log(this.foods);
   }
 
   /** receive an array which hold type of StoredFoods items , StoredFood is an object (you can see the structure at StoredFood interface)
@@ -73,19 +66,14 @@ export class CartComponent implements OnInit {
    * food price depends from size , TotalPrice equals all stored foods price
    */
   setPrice(foods: Array<StoredFoods>): number{
-    let multiply = 0;
     let price = 0;
     this.totalPrice = 0;
+    this.totalCount = 0;
     for(let i = 0; i <foods.length; i++){
-      if(foods[i].size == 'small')
-        multiply = 1;
-      if(foods[i].size == 'medium')
-        multiply = 1.5;
-      if(foods[i].size == 'big')
-        multiply = 2.2;
-      price = foods[i].basic_price * multiply * foods[i].quantity;
-      console.log(price);
+      price = foods[i].basic_price * foods[i].quantity;
+      this.pizzaCount = foods[i].quantity;
       this.totalPrice += price;
+      this.totalCount += this.pizzaCount;
     }
     return this.totalPrice;
   }
@@ -99,6 +87,9 @@ export class CartComponent implements OnInit {
     this.sessionService.removeAllFromCart(food);
     this.foods = this.sessionService.getFoods();
     this.totalPrice = this.setPrice(this.foods);
+    if(this.foods.length == 0){
+      this.isCollapsed = !this.isCollapsed;
+    }
   }
 
   get counter() {
@@ -119,6 +110,9 @@ export class CartComponent implements OnInit {
     this.sessionService.removeFromCart(food);
     this.foods = this.sessionService.getFoods();
     this.totalPrice = this.setPrice(this.foods);
+    if(this.foods.length == 0){
+      this.isCollapsed = !this.isCollapsed;
+    }
   }
 
 
@@ -177,11 +171,13 @@ export class CartComponent implements OnInit {
           this.isCollapsed = !this.isCollapsed;
           this.orderRequest = false;
           this.sessionService.emptyCart();
+          this.totalCount = 0;
           this.successOrder = false;
         },3000)
       }
     );
   }
+
 
 
   /**
@@ -220,19 +216,10 @@ export class CartComponent implements OnInit {
             lgModal.hide();
             this.orderRequest = false;
             this.sessionService.emptyCart();
+            this.totalCount = 0;
             this.successOrder = false;
           },3000)
         }
       )
   }
-
-
-  refreshMyCart(){
-    let subject = new Subject();
-  }
-
-
-
-
-
 }

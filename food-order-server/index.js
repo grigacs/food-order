@@ -38,13 +38,11 @@ app.post('/', function (request, response) {
         users.push(request.body);
         fs.writeFile("database.json", JSON.stringify(json));
     });
-    //console.log(request.body);
 
     response.end('registered');
 });
 
 app.post('/users_orders', function (request, response) {
-    console.log(request.body);
     fs.readFile('database.json', function (err, data) {
         var json = JSON.parse(data);
         var users_orders = json.database.users_orders;
@@ -57,7 +55,6 @@ app.post('/users_orders', function (request, response) {
 });
 
 app.post('/guests_orders', function (request, response) {
-    console.log(request.body);
     fs.readFile('database.json', function (err, data) {
         var json = JSON.parse(data);
         var guests_orders = json.database.guests_orders;

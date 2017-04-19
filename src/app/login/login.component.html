@@ -1,9 +1,9 @@
 <ng-container *ngIf="!sessionService.isLoggedIn()">
-  <button class="registration_button_float btn btn-success btn-md" [routerLink]="['/register']">Sign in</button>
+  <strong><button class="registration_button_float btn btn-success btn-md" [routerLink]="['/register']">Sign in</button></strong>
   <form (ngSubmit)="login(loginForm)" #loginForm="ngForm" class="login_form_float">
     <input mdInput type="text" placeholder="username" id="username" name="username" required minlength="4" ngModel/>
     <input mdInput type="password" placeholder="password" id="password" name="password" required minlength="8" ngModel/>
-    <button class="btn btn-primary  btn-md" md-button type="submit">Login</button>
+    <strong><button class="btn btn-primary  btn-md" md-button type="submit">Login</button></strong>
     <ng-container *ngIf="existUser == false">
       <div class="clear"></div>
       <span class="error">
@@ -15,7 +15,7 @@
 </ng-container>
 
 <ng-container *ngIf="sessionService.isLoggedIn()">
-  <button class="btn btn-success btn-md logout" (click)="logout()">Logout</button>
+  <strong><button class="btn btn-success btn-md logout" (click)="logout()">Logout</button></strong>
     <span class="uname" *ngIf="sessionService.user.username != 'admin'">
       Welcome {{user.username}}!
     </span>

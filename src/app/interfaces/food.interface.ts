@@ -10,6 +10,6 @@ export interface Foods {
   name: string,
   category: string,
   picture: string,
-  basis_price: number,
+  basic_price: number,
   top: string
 }

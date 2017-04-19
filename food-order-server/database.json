@@ -208,6 +208,65 @@
         ],
         "delivered": false,
         "totalPrice": 118.65
+      },
+      {
+        "user_id": 1,
+        "food_ids": [
+          2
+        ],
+        "food_quantities": [
+          9
+        ],
+        "food_sizes": [
+          "medium"
+        ],
+        "delivered": false,
+        "totalPrice": 516.375
+      },
+      {
+        "user_id": 1,
+        "food_ids": [
+          5
+        ],
+        "food_quantities": [
+          3
+        ],
+        "food_sizes": [
+          "small"
+        ],
+        "delivered": false,
+        "totalPrice": 80.91
+      },
+      {
+        "user_id": 1,
+        "food_ids": [
+          1
+        ],
+        "food_quantities": [
+          5
+        ],
+        "food_sizes": [
+          "medium"
+        ],
+        "delivered": false,
+        "totalPrice": 232.5
+      },
+      {
+        "user_id": 1,
+        "food_ids": [
+          2,
+          9
+        ],
+        "food_quantities": [
+          2,
+          2
+        ],
+        "food_sizes": [
+          "medium",
+          "medium"
+        ],
+        "delivered": false,
+        "totalPrice": 169.5
       }
     ],
     "guests_orders": [

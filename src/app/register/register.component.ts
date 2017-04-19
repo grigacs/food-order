@@ -88,7 +88,6 @@ export class RegisterComponent implements OnInit {
       },
       error => console.log(error),
       () => {
-        console.log(this.existUser);
         if (this.existUser == true) {
           this.uError = true;
           this.uErrorMessage = "Username already exist!";
@@ -111,7 +110,6 @@ export class RegisterComponent implements OnInit {
               response => {
                 this.insertedUser = true;
                 this.response = response;
-                console.log(response);
                 setTimeout(()=>{
                   this.router.navigate(['/']);
                 },3000)

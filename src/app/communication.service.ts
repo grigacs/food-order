@@ -57,7 +57,6 @@ export class CommunicationService {
         this.foodQueantites.push(quantity);
         this.foodSizes.push(size);
       }
-      console.log(this.foodIds + ' ' + userId);
       this.users_orders = {user_id: userId, food_ids: this.foodIds, food_quantities:this.foodQueantites, food_sizes:this.foodSizes, delivered: false, totalPrice:totalPrice};
 
       let headers = new Headers();

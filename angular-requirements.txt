@@ -1,0 +1,104 @@
+Alap elvárások (30 pont):
+		Projekt mefelelõen legyen struktúrálva (pipa)
+
+		Feature-ök legyenek modulokra bontva   (pipa)
+
+		Tilos közvetlenül DOM-ot manipulálni!  (pipa)
+			A DOM manipuláció csak akkor megengedett, ha nem lehet angularral megoldani! Bõvebben
+			Tanácsok:
+			Kerüld el, ha lehet!
+			Használd körültekintõen, ha szükséges!
+
+		Legalább 4.x.x Angular használata      (pipa)
+		Fordíthatóság JIT és AOT módban        (?)
+		Kommentezett forráskód		       (pipa)
+		Git verziókezelõ rendszer használata   (pipa)
+
+
+
+
+Elkészítendõ funkciók (45 pont):
+		Legalább 3 route		       (pipa)
+
+		Legalább 3 module, legalább 1 lazy loaded module  (?)
+
+		Legalább 1 service (pipa)
+
+		Legalább 1 direktíva (ami nem komponens)(pipa)
+
+		Legalább 10 (értelmes) komponens        (pipa)
+	
+		Legalább 1 (értelmes) form              (pipa)
+
+		Legalább 1 pipe                         (pipa)
+
+
+4 fõs csapat esetén még kötelezõ:
+		Animációk használata                    (?)
+
+		+3 komponens                            (még kell 2-3)
+
+		+1 form, pipe, direktíva vagy service   (pipa)
+
+
+
+
+
+
+Components:
+	01.) Admin
+	02.) Carousel
+	03.) Cart
+	04.) Cart-collapse
+	05.) Contact
+	06.) Food-order
+	07.) Header
+	08.) Login
+	09.) Main
+       	10.) Page-not-found
+	11.) Register
+
+Sevices:
+	1.) GetFoods (getdata)
+	2.) GetUsers (getdata)
+	3.) Cart-service
+	4.) Session-service
+	5.) Communication-service
+
+
+Directives:
+	1.) Click-outside
+
+
+Guards:
+	1.) Activate-register
+	2.) Admin
+
+
+Routing: 
+	- in the AppModule (routing with guard)
+	
+
+Pipe:
+	- in the ContactComponent (uppercase pipe using - see more: ContactComponent (html))
+
+
+More: - bootstrap css (ngx-valor)
+      - JSON processing (via own server)
+      - Assets (pictures, db)
+
+
+Issues: - Megoldani, hogy frissüljön a kosár refreshre és minden ujjabb rendelésre
+	- Header eltünteni admin felületrol és a page-not-found oldalról
+	- Rendelések listázása admin felületen például piros háttérrel amelyik még nincs elkészítve zöldre amelyik már elkészült , gombot rakni minden rendeléshez mellé ha kész akkor átálítja kész állapotra (adtabázis fel van rá készítve delivered property)
+	- Admin felületre amit csak szeretnétek, user törlése , rendelés törlése, kedv szerint
+	- Felhasználói oldalon esetleg lehetne listázni a rendelését a felhasználónak, ha admin átváltotta készre lehetne jelezni
+	- Esetleg footer componenst is létre lehet hozni, hogy kerekebb legyen az oldal
+	- Saját pipeot is lehet írni, nem tudom hogy létezot kell használni vagy sajátot irni
+	- Animációt is lehet készíteni amenyiben kell
+	- Valamiért a formoknál ahol van ngModel nem lehet default értéket megadni, vagy csak nem tudtam 
+	- Add to cart nál a kis matrica nem várja meg az üzenetet, mindig az elozot mutatja, observer vagy más megoldás lehetséges
+	- Lehet olyan lehetoség is, bevezetni az adatbázisnal a pizzáknál egy onStock propertyt, ha elfogyott admin át tudná állitani (true, false) ha false nem listázni.
+	(Ilyen ötleteim vannak még de már nincs idom foglalkozni vele, jó munkát. :) )
+
+	A server futtatásához be kell lépni a food-order-server könyvtárba és a node index.js parancsot futtatni.

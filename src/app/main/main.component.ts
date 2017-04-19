@@ -21,9 +21,4 @@ export class MainComponent implements OnInit {
   ngOnInit() {
 
   }
-
-  showUser(){
-    console.log(this.user);
-  }
-
 }

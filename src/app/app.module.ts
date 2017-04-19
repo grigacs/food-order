@@ -21,10 +21,9 @@ import { CarouselModule } from "ngx-bootstrap";
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CartCollapseComponent } from './cart-collapse/cart-collapse.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
-import {Foods} from "./interfaces/food.interface";
 import { AdminComponent } from './admin/admin.component';
 import { ClickOutsideDirective } from './click-outside.directive';
-
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
   /** Routing has been created by Richard Asztalos
    *  Simple routing for the components. Admin route has a guard (for more details check AdminGuard and AdminComponent)
@@ -65,6 +64,7 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     CollapseModule,
     ReactiveFormsModule,
+    PopoverModule
   ],
   providers: [SessionService, AdminGuard],
   bootstrap: [AppComponent]

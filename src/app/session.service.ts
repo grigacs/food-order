@@ -92,7 +92,6 @@ export class SessionService {
       /**
        * or it is the first food the simply store it
        * */
-      console.log(food);
       getFoods = JSON.stringify(food);
       sessionStorage.setItem('foods', getFoods);
     }
@@ -102,7 +101,6 @@ export class SessionService {
      * after store into session
      * */
     if(this.sameFoodAdded === false) {
-      console.log(food);
       getFoods = getFoods + '+' + JSON.stringify(food);
       sessionStorage.setItem('foods', getFoods);
 
@@ -111,7 +109,6 @@ export class SessionService {
        * if same we just do string from array and store it
        * */
     }else if(this.sameFoodAdded === true){
-        console.log(food);
         getFoods = strFoodObjects.join('+');
         sessionStorage.setItem('foods', getFoods);
     }
@@ -133,7 +130,6 @@ export class SessionService {
       if(strFoodObjects[i] != ''){
         let currentFood = JSON.parse(strFoodObjects[i]);
         if(food.food_id == currentFood.food_id && food.size == currentFood.size) {
-          console.log(currentFood);
           let tempFood = JSON.parse(strFoodObjects[i]);
           tempFood.quantity--;
           if(tempFood.quantity > 0){

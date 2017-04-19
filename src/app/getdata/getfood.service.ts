@@ -32,5 +32,14 @@ export class GetfoodService {
   }
 
 
+  getCurrentFood(foods: Foods[], id: number) : Foods{
+    for(let i = 0;i < foods.length;i++) {
+      if (foods[i].food_id == id) {
+        return foods[i];
+      }
+    }
+  }
+
+
 
 }

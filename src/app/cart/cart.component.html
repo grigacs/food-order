@@ -1,9 +1,9 @@
 <i (click)="isCollapsed= !isCollapsed" class="fa fa-lg fa-shopping-cart cart-style" aria-hidden="true">
-<span      (click)="refreshCart(); isLoggedIn()" > ( {{foods.length}} item )</span>
+<span      (click)="refreshCart(); isLoggedIn()" > ( {{totalCount}} item )</span>
 </i>
 <div
-    (appClickOutside)="Close($event)"
-    (collapsed)="collapsed($event)"
+  (appClickOutside)="Close($event)"
+     (collapsed)="collapsed($event)"
      (expanded)="expanded($event)"
      [collapse]="isCollapsed"
      class="collapse-card card card-block card-header">
@@ -31,14 +31,8 @@
                     <p><span>size:</span> {{food.size}} </p>
                   </div>
                   <!-- Check ordered food size for price -->
-                  <div class="pizza-price" *ngIf="food.size == 'small'">
+                  <div class="pizza-price">
                     <p><span>Price: € </span>  {{(food.basic_price * food.quantity).toFixed(2)}} </p>
-                  </div>
-                  <div class="pizza-price" *ngIf="food.size == 'medium'">
-                    <p><span>Price: € </span> {{(food.basic_price * food.quantity * 1.5).toFixed(2)}} </p>
-                  </div>
-                  <div class="pizza-price" *ngIf="food.size == 'big'">
-                    <p><span>Price: € </span> {{(food.basic_price * food.quantity * 2.2).toFixed(2)}} </p>
                   </div>
                 <div class="pizza-count">
                   <p><span>Count:</span> {{food.quantity}}</p>
@@ -67,7 +61,7 @@
             </div>
           <ng-container *ngIf="loggedIn === false">
           <div class="checkout">
-            <button class="btn btn-primary btn-md" (click)="lgModal.show(); isCollapsed= !isCollapsed">Checkout</button>
+            <button class="btn btn-primary btn-md" (click)="lgModal.show(); isCollapsed= !isCollapsed;">Checkout</button>
           </div>
           </ng-container>
           <ng-container *ngIf="loggedIn === true && orderRequest === false">
@@ -125,7 +119,7 @@
               </div>
             </ng-container>
             <button name="reset" (click)="lgModal.hide()" class="btn btn-danger btn-md" type="reset">Cancel</button>
-            <button name="submit" class="btn btn-success btn-md" type="submit">Order</button>
+            <button name="submit"  class="btn btn-success btn-md" type="submit">Order</button>
           </form>
         </div>
       </div>
