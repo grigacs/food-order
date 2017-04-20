@@ -59,11 +59,11 @@ export class FoodOrderComponent implements OnInit {
         if (quantity != '')
         {
           if (target.value == 'small' && this.currentFood.food_id == id) {
-            item.basic_price = (this.currentFood.basic_price * quantity);
+            //item.basic_price = (this.currentFood.basic_price * quantity);
           } else if (target.value == 'medium' && this.currentFood.food_id == id) {
-            item.basic_price = (this.currentFood.basic_price * 1.5 * quantity);
+            //item.basic_price = (this.currentFood.basic_price * 1.5 * quantity);
           } else if (target.value == 'big' && this.currentFood.food_id == id) {
-            item.basic_price = (this.currentFood.basic_price * 2.2 * quantity);
+            //item.basic_price = (this.currentFood.basic_price * 2.2 * quantity);
           }
         }else{
           if (target.value == 'small' && this.currentFood.food_id == id) {

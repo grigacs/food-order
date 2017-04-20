@@ -7,6 +7,7 @@ import {NgForm} from "@angular/forms";
 import {Subject} from "rxjs";
 
 
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -39,7 +40,9 @@ export class CartComponent implements OnInit {
                 this.totalCount = 0;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.refreshCart();
+  }
 
 
 
@@ -50,6 +53,10 @@ export class CartComponent implements OnInit {
 
   Close(event: Event){
     this.isCollapsed = true;
+  }
+
+  Add(event: Event){
+    this.refreshCart();
   }
 
   // show foods at cart which are stored at sessionStorage
