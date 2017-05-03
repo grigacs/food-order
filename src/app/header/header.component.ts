@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
 
   foods: Array<Foods> = [];
 
-  constructor() { }
+  constructor() {}
 
 
   ngOnInit() {

@@ -2,6 +2,8 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { CapitalizePipe} from '../capitalize.pipe';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-contact',
@@ -17,6 +19,8 @@ export class ContactComponent implements OnInit {
      *           After submitting the form it checks whether the incoming data is correct or not and sends back a message.
      *           If it is not, then errorMessage will show up, else form will be submitted.
      *           It also has a function which redirects the user to the main page when he/she is done.
+     *           First name and last name use capitalize custom pipe.
+     *           There's a time Observable which shows the current date, in the template it is used to transform with a pipe.
     */
 
   errorMessage: string;
@@ -25,6 +29,7 @@ export class ContactComponent implements OnInit {
   problem: string;
   email: string;
   checked: boolean;
+  time: Observable<Date>;
 
   constructor(private router: Router) { }
 
@@ -42,6 +47,7 @@ export class ContactComponent implements OnInit {
        this.problem = form.value.problem;
        this.email = form.value.email;
        this.checked = true;
+       this.time = Observable.interval(1).map(x => new Date());
      }
   }
 

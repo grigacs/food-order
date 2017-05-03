@@ -24,6 +24,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AdminComponent } from './admin/admin.component';
 import { ClickOutsideDirective } from './click-outside.directive';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { CapitalizePipe } from './capitalize.pipe';
 
   /** Routing has been created by Richard Asztalos
    *  Simple routing for the components. Admin route has a guard (for more details check AdminGuard and AdminComponent)
@@ -52,7 +53,8 @@ const appRoutes: Routes = [
     CarouselComponent,
     CartCollapseComponent,
     AdminComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    CapitalizePipe
   ],
   imports: [
     BrowserModule,

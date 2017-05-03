@@ -17,13 +17,14 @@
       <div class="modal-dialog modal-md">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title pull-left">Message</h4>
+            <h4 class="modal-title pull-left">Message </h4>
              <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide(); redirect()">
               <span class="inform" aria-hidden="true">X</span>
             </button>
           </div>
           <div class="modal-body">
-                Dear  "{{ first_name | uppercase }} {{ last_name | uppercase }}" your message has been sent!<br/><br/>
+                <span class="date"> Current Time: {{ time | async | date:'yyyy/MM/dd hh:mm:ss' }} </span><br/><br/>
+                Dear  "{{ first_name | capitalize }} {{ last_name | capitalize }}" your message has been sent!<br/><br/>
                 Thank you for letting us know about: "{{ problem | uppercase }}" ! <br/><br/>
                 We will inform you, check your emails at your email address : "{{ email | uppercase }}". <br/><br/><br/>
                 <span class="inform">Note: After closing this window, you will be redirected to the main page.</span>
