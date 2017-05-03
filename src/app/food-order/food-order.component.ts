@@ -25,6 +25,7 @@ export class FoodOrderComponent implements OnInit {
 
   food: Foods[];
   sizes: Array<string> = ['small','medium','big'];
+  defaultQuantity: number = 1;
 
 
   foods: Array<StoredFoods>;
@@ -87,9 +88,12 @@ export class FoodOrderComponent implements OnInit {
    * */
   addToCart(form: NgForm, food: Foods, pop){
 
+    setTimeout(()=>{
+      pop.show();
+    },1000);
+
     if(!form.valid){
       this.message = "All field must be filled out!";
-      pop.show();
       return;
     }
 
@@ -101,7 +105,8 @@ export class FoodOrderComponent implements OnInit {
 
     this.message = "successful added into cart!";
 
-    pop.show();
+
+
     this.sessionService.setFood(food, form.value.quantity, form.value.size);
 
   }

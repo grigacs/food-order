@@ -226,4 +226,19 @@ export class SessionService {
   }
 
 
+  getFoodsObservable(): Array<StoredFoods>{
+    let strFoodObjects: Array<string> = [];
+    if (sessionStorage.getItem('foods') !== null) {
+      strFoodObjects = sessionStorage.getItem('foods').split('+');
+    }
+    this.foods = [];
+    for (let i = 0; i < strFoodObjects.length; i++) {
+      if(strFoodObjects[i] != '') {
+        this.foods.push(JSON.parse(strFoodObjects[i]))
+      }
+    }
+    return this.foods;
+  }
+
+
 }

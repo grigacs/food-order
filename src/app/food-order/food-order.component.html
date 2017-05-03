@@ -14,12 +14,12 @@
                      (ngSubmit)="addToCart(cartForm, item, pop)" #cartForm="ngForm">
                   <div class="float-form">
                   <label  class="name"> Size: </label>
-                  <select #size  name="size" ngModel>
+                  <select #size  name="size" [ngModel]="sizes[0]">
                     <option *ngFor="let size of sizes" value="{{size}}" [selected]="size == 'small'">{{size}}</option>
                   </select>
                   <label class="name"> Quantity: </label>
                   <input (change)="onChange(size, item.food_id, item, quantity.value)" #quantity  name="quantity" type="number" min="1" max="5" placeholder="1-5" class="quantity"
-                          value="1" required ngModel/> <br/><br/>
+                           required  [ngModel]="defaultQuantity" value="1"/> <br/><br/>
                   </div>
                   <div class="float-form">
                     <button

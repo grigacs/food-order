@@ -18,7 +18,6 @@ export class ClickOutsideDirective {
   public onClick(targetElement) {
     const clickedInside = this.elementRef.nativeElement.contains(targetElement);
     const buttonClicked = targetElement.nodeName;
-    if(targetElement.innerText == 'Sign in')
     if (  (!clickedInside  && buttonClicked != 'I' && buttonClicked != 'BUTTON' && buttonClicked != 'SPAN') ||
           (buttonClicked == 'BUTTON' && targetElement.innerText.trim() == 'Login') || (buttonClicked == 'BUTTON' && targetElement.innerText.trim() == 'Sign in')) {
     this.appClickOutside.emit(null);
