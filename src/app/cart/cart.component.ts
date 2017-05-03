@@ -56,7 +56,9 @@ export class CartComponent implements OnInit {
   }
 
   Add(event: Event){
-    this.refreshCart();
+      setTimeout(()=>{
+        this.refreshCart();
+      },10)
   }
 
   // show foods at cart which are stored at sessionStorage
