@@ -23,3 +23,56 @@
   </p>
   <br>
 </div>
+<br><br><br>
+
+<div class="title"><span> List of Orders </span>
+<p class="tabhead">
+   <span class="username"> User Id </span>
+   <span class="password"> Foods Id </span>
+   <span class="firstname"> Food Quantity </span>
+   <span class="lastname">  Food Size </span>
+   <span class="email">  Delivered? </span>
+   <span class="address">  Total Price </span>
+</p>
+</div>
+<br>>
+
+<div class="datas">
+ <p *ngFor="let order of usersOrders"> 
+   <span class="username">    {{ order.user_id}} </span>
+   <span class="password">   {{ order.food_ids }} </span>
+   <span class="firstname">  {{ order.food_quantities }} </span>
+   <span class="lastname">  {{ order.food_sizes }} </span>
+   <span class="email">  {{ order.delivered }} </span>
+   <span class="address">  {{ order.totalPrice }} </span>
+   <br><hr>
+  </p>
+  <br>
+</div>
+
+<br><br><br>
+
+<div class="title"><span> List of Guest Orders </span>
+<p class="tabhead">
+   <span class="username"> Full Name</span>
+   <span class="password"> Mail </span>
+   <span class="firstname"> Address </span>
+   <span class="lastname"> Food id | Quantity  </span>
+   <span class="email">  Delivered? </span>
+   <span class="address">  Total Price </span>
+</p>
+</div>
+<br>
+
+<div class="datas">
+ <p *ngFor="let gorder of guestsOrders"> 
+   <span class="username">  {{ gorder.first_name }}  {{ gorder.last_name }} </span>
+   <span class="password">     {{ gorder.mail }} </span>
+   <span class="firstname">  {{ gorder.address }} </span>
+   <span class="lastname"> {{ gorder.food_ids}} | {{ gorder.food_quantities}}  </span>
+   <span class="email">  {{ gorder.delivered }} </span>
+   <span class="address">  {{ gorder.totalPrice }} </span>
+   <br><hr>
+  </p>
+  <br>
+</div>
