@@ -5,6 +5,7 @@ import {CommunicationService} from "../communication.service";
 import {Users} from "../interfaces/user.interface";
 import {NgForm} from "@angular/forms";
 import {Subject} from "rxjs";
+import {delay} from "rxjs/operator/delay";
 
 
 
@@ -56,9 +57,7 @@ export class CartComponent implements OnInit {
   }
 
   Add(event: Event){
-      setTimeout(()=>{
-        this.refreshCart();
-      },10)
+        this.refreshCart()
   }
 
   // show foods at cart which are stored at sessionStorage
@@ -204,8 +203,7 @@ export class CartComponent implements OnInit {
       if (form.value.firstname == '' ||
         form.value.lastname == '' ||
         form.value.mail == '' ||
-        form.value.address == '' ||
-        form.value.mobile == '') {
+        form.value.address == '') {
         this.error = true;
         this.errorMessage = 'All fields must be filled out!';
       }
@@ -215,9 +213,9 @@ export class CartComponent implements OnInit {
 
     this.communicationService.insertGuestsOrders(this.foods,form.value.firstname,
                                                  form.value.lastname, form.value.mail,
-                                                  form.value.address, form.value.mobile, this.totalPrice)
+                                                  form.value.address, this.totalPrice)
       .subscribe(
-        result => {this.orderResult = result},
+        result => {this.orderResult = result; console.log(this.orderResult)},
         error => {console.log(error)},
         () => {
           this.successOrder = true;

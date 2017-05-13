@@ -12,5 +12,6 @@ export interface UsersOrders {
   food_sizes: Array<string>,
   delivered: boolean,
   totalPrice: number,
+  date: string;
 }
 

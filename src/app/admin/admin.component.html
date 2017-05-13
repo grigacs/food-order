@@ -1,78 +1,99 @@
-<div class="title"><span> List of Users </span>
+<div class="container">
+  <div class="title">
+    <span> List of Users </span>
+  </div>
+  <div class="tabhead">
+    <span class="username"> Username </span>
+    <span class="password"> Password </span>
+    <span class="firstname"> First Name </span>
+    <span class="lastname">  Last Name </span>
+    <span class="email">  Email </span>
+    <span class="address">  Address </span>
+    <div class="clear"></div>
+  </div>
 
-<p class="tabhead">
-   <span class="username"> Username </span>
-   <span class="password"> Password </span>
-   <span class="firstname"> First Name </span>
-   <span class="lastname">  Last Name </span>
-   <span class="email">  Email </span>
-   <span class="address">  Address </span>
-</p>
-</div>
-<br>
 
-<div class="datas">
- <p *ngFor="let user of users"> 
-   <span class="username"> {{ user.username }} </span>
-   <span class="password">   {{ user.password }} </span>
-   <span class="firstname">  {{ user.firstname }} </span>
-   <span class="lastname">  {{ user.lastname }} </span>
-   <span class="email">  {{ user.email }} </span>
-   <span class="address">  {{ user.address }} </span>
-   <br><hr>
-  </p>
-  <br>
-</div>
-<br><br><br>
-
-<div class="title"><span> List of Orders </span>
-<p class="tabhead">
-   <span class="username"> User Id </span>
-   <span class="password"> Foods Id </span>
-   <span class="firstname"> Food Quantity </span>
-   <span class="lastname">  Food Size </span>
-   <span class="email">  Delivered? </span>
-   <span class="address">  Total Price </span>
-</p>
-</div>
-<br>>
-
-<div class="datas">
- <p *ngFor="let order of usersOrders"> 
-   <span class="username">    {{ order.user_id}} </span>
-   <span class="password">   {{ order.food_ids }} </span>
-   <span class="firstname">  {{ order.food_quantities }} </span>
-   <span class="lastname">  {{ order.food_sizes }} </span>
-   <span class="email">  {{ order.delivered }} </span>
-   <span class="address">  {{ order.totalPrice }} </span>
-   <br><hr>
-  </p>
-  <br>
+  <div *ngFor="let user of users" class="datas">
+    <span class="username"> {{ user.username }} </span>
+    <span class="password">   {{ user.password }} </span>
+    <span class="firstname">  {{ user.firstname }} </span>
+    <span class="lastname">  {{ user.lastname }} </span>
+    <span class="email">  {{ user.email }} </span>
+    <span class="address">  {{ user.address }} </span>
+    <div class="clear"></div>
+  </div>
 </div>
 
-<br><br><br>
+<div class="container">
+  <div class="title">
+    <span> List of Orders  </span>
+  </div>
+  <div class="tabhead">
+     <span class="float-datas"> Username </span>
+     <span class="float-datas"> Address </span>
+     <span class="float-datas2"> Orders </span>
+     <span class="float-datas">  Total Price </span>
+    <div class="clear"></div>
+  </div>
+  <div class="box">
+  <div class="float-datas">
+  <div *ngFor="let uProp of usersProp" class="datas2">
+    <div>  {{ uProp.username}}   </div>
+  </div>
+  </div>
+  <div class="float-datas">
+  <div *ngFor="let uProp of usersProp" class="datas2">
+    <div>  {{ uProp.address}}   </div>
+  </div>
+  </div>
+  <div class="float-datas2">
+    <div *ngFor="let pProp of pizzaProps" class="datas2">
+      <div>  {{ pProp }}   </div>
+    </div>
+  </div>
+  <div class="float-datas">
+    <div *ngFor="let uOrder of usersOrders" class="datas2">
+      <div> € {{ uOrder.totalPrice}}   </div>
+    </div>
+  </div>
+    <div class="clear"></div>
+  </div>
 
-<div class="title"><span> List of Guest Orders </span>
-<p class="tabhead">
-   <span class="username"> Full Name</span>
-   <span class="password"> Mail </span>
-   <span class="firstname"> Address </span>
-   <span class="lastname"> Food id | Quantity  </span>
-   <span class="email">  Delivered? </span>
-   <span class="address">  Total Price </span>
-</p>
 </div>
-<br>
 
-<div class="datas">
- <p *ngFor="let gorder of guestsOrders"> 
-   <span class="username">  {{ gorder.first_name }}  {{ gorder.last_name }} </span>
-   <span class="password">     {{ gorder.mail }} </span>
-   <span class="firstname">  {{ gorder.address }} </span>
-   <span class="lastname"> {{ gorder.food_ids}} | {{ gorder.food_quantities}}  </span>
-   <span class="email">  {{ gorder.delivered }} </span>
-   <span class="address">  {{ gorder.totalPrice }} </span>
-   <br><hr>
-  </p>
-  <br>
+<div class="container">
+  <div class="title">
+    <span> List of Guest Orders   </span>
+  </div>
+  <div class="tabhead">
+     <span class="float-datas"> Full Name</span>
+     <span class="float-datas"> Address </span>
+     <span class="float-datas2"> Foods  </span>
+     <span class="float-datas">  Total Price </span>
+    <div class="clear"></div>
+  </div>
+
+  <div class="box">
+    <div class="float-datas">
+      <div *ngFor="let gorder of guestsOrders" class="datas2">
+        <div>  {{ gorder.first_name }}  {{ gorder.last_name }}   </div>
+      </div>
+    </div>
+    <div class="float-datas">
+      <div *ngFor="let gorder of guestsOrders" class="datas2">
+        <div>  {{ gorder.address}}   </div>
+      </div>
+    </div>
+    <div class="float-datas2">
+      <div *ngFor="let pGuestProp of pizzaGuestProps" class="datas2">
+        <div>  {{ pGuestProp }}   </div>
+      </div>
+    </div>
+    <div class="float-datas">
+      <div *ngFor="let gorder of guestsOrders" class="datas2">
+        <div> € {{ gorder.totalPrice}}   </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
 </div>

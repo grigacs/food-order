@@ -10,7 +10,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FoodOrderComponent } from './food-order/food-order.component';
 import { MainComponent } from './main/main.component';
-import { RouterModule, Routes } from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from './login/login.component';
@@ -25,6 +25,11 @@ import { AdminComponent } from './admin/admin.component';
 import { ClickOutsideDirective } from './click-outside.directive';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { CapitalizePipe } from './capitalize.pipe';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import {ActivateRegisterGuard} from "./activate-register.guard";
+import { UsersComponent } from './users/users.component';
+import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
+import {UsersOrders} from "./interfaces/user-orders.interface";
 
   /** Routing has been created by Richard Asztalos
    *  Simple routing for the components. Admin route has a guard (for more details check AdminGuard and AdminComponent)
@@ -34,8 +39,11 @@ const appRoutes: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'main', component: MainComponent },
     { path: 'order', component: FoodOrderComponent },
-    { path: 'register', component: RegisterComponent },
+    { path: 'my_order', component: MyOrdersComponent, canActivate: [ActivateRegisterGuard] },
+    { path: 'register', component: RegisterComponent},
     { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
+    { path: 'admin-orders', component: AdminOrdersComponent, canActivate: [AdminGuard] },
+    { path: 'users', component: UsersComponent, canActivate: [AdminGuard] },
     { path: '**', component: PageNotFoundComponent, pathMatch: 'full'}
 ];
 
@@ -54,7 +62,10 @@ const appRoutes: Routes = [
     CartCollapseComponent,
     AdminComponent,
     ClickOutsideDirective,
-    CapitalizePipe
+    CapitalizePipe,
+    MyOrdersComponent,
+    UsersComponent,
+    AdminOrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +79,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     PopoverModule
   ],
-  providers: [SessionService, AdminGuard],
+  providers: [SessionService, AdminGuard, ActivateRegisterGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

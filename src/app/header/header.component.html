@@ -1,4 +1,33 @@
-<header>
+<header *ngIf="sessionService.getUser() != null">
+  <nav  *ngIf="sessionService.getUser().username != 'admin'">
+    <i class="fa fa-lg  fa-home" aria-hidden="true">
+      <a [routerLink]="['/']">Home</a>
+    </i>
+    <i class="fa fa-lg  fa-gift" aria-hidden="true">
+      <a [routerLink]="['/order']">Order</a>
+    </i>
+    <i class="fa fa-lg  fa-map-marker" aria-hidden="true">
+      <a [routerLink]="['/contact']">Contact</a>
+    </i>
+    <i *ngIf="sessionService.getUser() !== null" class="fa fa-lg  fa-shopping-bag" aria-hidden="true">
+      <a [routerLink]="['/my_order']">My orders</a>
+    </i>
+  </nav>
+  <nav  *ngIf="sessionService.getUser().username == 'admin'">
+    <i class="fa fa-lg  fa-home" aria-hidden="true">
+      <a [routerLink]="['/admin']">Home</a>
+    </i>
+    <i class="fa fa-lg  fa-gift" aria-hidden="true">
+      <a [routerLink]="['/users']">Users</a>
+    </i>
+    <i class="fa fa-lg  fa-map-marker" aria-hidden="true">
+      <a [routerLink]="['/admin-orders']">Orders</a>
+    </i>
+  </nav>
+  <app-cart *ngIf="sessionService.getUser().username != 'admin'"></app-cart>
+  <app-login></app-login>
+</header>
+<header *ngIf="sessionService.getUser() == null">
   <nav >
     <i class="fa fa-lg  fa-home" aria-hidden="true">
       <a [routerLink]="['/']">Home</a>
@@ -8,6 +37,9 @@
     </i>
     <i class="fa fa-lg  fa-map-marker" aria-hidden="true">
       <a [routerLink]="['/contact']">Contact</a>
+    </i>
+    <i *ngIf="sessionService.getUser() !== null" class="fa fa-lg  fa-shopping-bag" aria-hidden="true">
+      <a [routerLink]="['/my_order']">My orders</a>
     </i>
   </nav>
   <app-cart></app-cart>

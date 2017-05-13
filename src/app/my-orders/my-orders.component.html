@@ -1,0 +1,21 @@
+  <div class="holder">
+    <div *ngFor="let pizzas of orders let i = index" class="flex-div">
+      <div class="pizzas align-properties">
+        <div *ngFor="let pizza of pizzas">
+          {{pizza}}
+        </div>
+      </div>
+      <div class="pizzas">
+        <span>
+          <strong>Delivered:</strong> {{delivered[i]}}
+        </span>
+      </div>
+      <div class="pizzas">
+        <span>
+          <strong>Total Price: € <span class="color">{{totalPrice[i]}}</span></strong>
+        </span>
+      </div>
+      <hr />
+    </div>
+    <div class="clear"></div>
+  </div>

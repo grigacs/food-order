@@ -22,8 +22,7 @@ export class ClickOutsideDirective {
           (buttonClicked == 'BUTTON' && targetElement.innerText.trim() == 'Login') || (buttonClicked == 'BUTTON' && targetElement.innerText.trim() == 'Sign in')) {
     this.appClickOutside.emit(null);
     }if(targetElement.classList.value.trim() == 'fa fa-cart-plus'){
-      this.appClickBuy.emit(true)
-      //console.log(true);
+      this.appClickBuy.emit(true);
     }
   }
 

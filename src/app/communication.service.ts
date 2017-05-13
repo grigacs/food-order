@@ -16,6 +16,7 @@ export class CommunicationService {
   foodQueantites: Array<number>;
   foodSizes: Array<string>;
   guests_orders: GuestsOrders;
+  date: string;
 
   constructor(private http: Http) {
   }
@@ -39,7 +40,19 @@ export class CommunicationService {
     return this.result;
   }
 
-
+  dateFormatNow(): string  {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1;
+    let yyyy = today.getFullYear();
+    if (dd < 10) {
+      dd = parseInt('0') + dd;
+    }
+    if (mm < 10) {
+      mm = parseInt('0') + mm;
+    }
+    return  yyyy + "." + mm + "." + dd + ".";
+  }
   /**
    * insert UserOrders
    * we send UsersOrders object stringify to the server for processing and after insert to database
@@ -49,6 +62,7 @@ export class CommunicationService {
       this.foodIds = [];
       this.foodQueantites = [];
       this.foodSizes = [];
+      this.date = this.dateFormatNow();
       for(let i = 0; i < order.length; i++){
         let foodId: number = order[i].food_id;
         let quantity: number = order[i].quantity;
@@ -57,7 +71,7 @@ export class CommunicationService {
         this.foodQueantites.push(quantity);
         this.foodSizes.push(size);
       }
-      this.users_orders = {user_id: userId, food_ids: this.foodIds, food_quantities:this.foodQueantites, food_sizes:this.foodSizes, delivered: false, totalPrice:totalPrice};
+      this.users_orders = {user_id: userId, food_ids: this.foodIds, food_quantities:this.foodQueantites, food_sizes:this.foodSizes, delivered: false, totalPrice:totalPrice,date: this.date};
 
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
@@ -75,10 +89,10 @@ export class CommunicationService {
    * save user information from form, food_ids (because can multiple food order) , quantities of foods and delivered false (it means ordered but not finished yet)
    */
   insertGuestsOrders(order: Array<StoredFoods>,firstname: string,
-                    lastname: string, mail: string, address:string, mobile: string, totalPrice: number): Observable<string>{
+                    lastname: string, mail: string, address:string, totalPrice: number): Observable<string>{
     this.foodIds = [];
     this.foodQueantites = [];
-
+    this.date = this.dateFormatNow();
     for(let i = 0; i < order.length; i++){
       let foodId = order[i].food_id;
       let quantity: number = order[i].quantity;
@@ -86,14 +100,15 @@ export class CommunicationService {
       this.foodIds.push(foodId);
       this.foodQueantites.push(quantity);
       this.foodSizes.push(size);
+
     }
 
     this.guests_orders = {first_name: firstname, last_name: lastname,
-                          mail: mail, address: address, mobile:mobile,
+                          mail: mail, address: address,
                           food_ids: this.foodIds, food_quantities:this.foodQueantites,
                           food_sizes:this.foodSizes, delivered: false, totalPrice: totalPrice};
 
-
+    console.log(this.guests_orders)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     this.result = this.http.post('http://localhost:8100/guests_orders', JSON.stringify(this.guests_orders), {

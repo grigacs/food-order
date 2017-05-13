@@ -10,7 +10,6 @@ export interface GuestsOrders {
   last_name: string,
   mail: string;
   address: string,
-  mobile: string,
   food_ids: Array<number>,
   food_quantities: Array<number>,
   food_sizes: Array<string>,

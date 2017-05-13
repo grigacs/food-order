@@ -1,0 +1,36 @@
+.flex-div{
+  display: flex;
+  border-bottom:1px solid #ccc;
+}
+
+.pizzas{
+  float: left;
+  width:33%;
+  display: block;
+  text-align: center;
+  margin:25px;
+}
+
+span{
+  display: block;
+  padding-top: 6%;
+}
+
+
+
+.align-properties{
+  text-align: left;
+}
+
+.holder{
+  background-color: white;
+  width: 80%;
+  margin: 20px auto;
+  box-shadow: 1px 2px 17px 0 rgba(0,0,0,0.25);
+}
+
+.color{
+  color: #1d9d74;
+  padding: 0;
+  display: inline;
+}

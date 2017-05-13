@@ -58,6 +58,7 @@ app.post('/guests_orders', function (request, response) {
     fs.readFile('database.json', function (err, data) {
         var json = JSON.parse(data);
         var guests_orders = json.database.guests_orders;
+        console.log(request.body);
         guests_orders.push(request.body);
         fs.writeFile("database.json", JSON.stringify(json));
     });

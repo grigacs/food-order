@@ -64,4 +64,12 @@ export class GetUserService {
     }
   }
 
+  getUserById(users: Users[],id: number) : Users{
+    for(let i = 0;i < users.length;i++){
+      if(id == users[i].user_id){
+        return users[i];
+      }
+    }
+  }
+
 }

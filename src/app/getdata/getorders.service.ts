@@ -3,6 +3,7 @@ import { UsersOrders } from '../interfaces/user-orders.interface';
 import { GuestsOrders } from '../interfaces/guest-orders.interface';
 import { Observable } from 'rxjs';
 import { Http } from '@angular/http';
+import {Foods} from "../interfaces/food.interface";
 
 @Injectable()
 export class GetOrdersService {
@@ -45,5 +46,7 @@ export class GetOrdersService {
       .map(gorders => this.gorders = gorders);
     return this.results;
   }
+
+
 
 }

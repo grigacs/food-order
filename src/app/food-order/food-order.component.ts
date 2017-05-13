@@ -43,9 +43,7 @@ export class FoodOrderComponent implements OnInit {
         this.price = 1;
       }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   getFromCart(){
       this.foods = this.sessionService.getFoods();
@@ -88,9 +86,7 @@ export class FoodOrderComponent implements OnInit {
    * */
   addToCart(form: NgForm, food: Foods, pop){
 
-    setTimeout(()=>{
       pop.show();
-    },1000);
 
     if(!form.valid){
       this.message = "All field must be filled out!";
@@ -113,11 +109,6 @@ export class FoodOrderComponent implements OnInit {
 
 
   hide(pop){
-    setTimeout(()=>{
       pop.hide();
-    },3000)
   }
-
-
-
 }

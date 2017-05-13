@@ -54,6 +54,15 @@
         "password": "admin1234",
         "address": "admin",
         "email": "admin"
+      },
+      {
+        "user_id": 7,
+        "firstname": "fsfs",
+        "lastname": "fsf",
+        "username": "fsdfsd",
+        "password": "fsfsfsdfsfsfsd",
+        "address": "fsfsdfsfsdf",
+        "email": "fsdfsdfsd"
       }
     ],
     "foods": [
@@ -267,15 +276,83 @@
         ],
         "delivered": false,
         "totalPrice": 169.5
+      },
+      {
+        "user_id": 1,
+        "food_ids": [
+          1,
+          2
+        ],
+        "food_quantities": [
+          1,
+          1
+        ],
+        "food_sizes": [
+          "small",
+          "small"
+        ],
+        "delivered": false,
+        "totalPrice": 28.25,
+        "date": "2017.5.10."
+      },
+      {
+        "user_id": 1,
+        "food_ids": [
+          2,
+          3
+        ],
+        "food_quantities": [
+          2,
+          3
+        ],
+        "food_sizes": [
+          "small",
+          "small"
+        ],
+        "delivered": false,
+        "totalPrice": 56.25,
+        "date": "2017.5.10."
+      },
+      {
+        "user_id": 1,
+        "food_ids": [
+          1
+        ],
+        "food_quantities": [
+          1
+        ],
+        "food_sizes": [
+          "small"
+        ],
+        "delivered": false,
+        "totalPrice": 15.5,
+        "date": "2017.5.13."
+      },
+      {
+        "user_id": 1,
+        "food_ids": [
+          2,
+          3
+        ],
+        "food_quantities": [
+          1,
+          1
+        ],
+        "food_sizes": [
+          "small",
+          "small"
+        ],
+        "delivered": false,
+        "totalPrice": 23,
+        "date": "2017.5.13."
       }
     ],
     "guests_orders": [
-      {},
       {
-        "first_name": "dsadad",
-        "last_name": "sadsadsad",
-        "mail": "sadasdsadasd",
-        "address": "sesadasd",
+        "first_name": "greg",
+        "last_name": "uber",
+        "mail": "g@mail.com",
+        "address": "Street 301",
         "food_ids": [
           2,
           2,
@@ -293,9 +370,7 @@
           "big",
           "small",
           "medium",
-          "small",
-          "big",
-          "medium"
+          "small"
         ],
         "delivered": false,
         "totalPrice": 159.3

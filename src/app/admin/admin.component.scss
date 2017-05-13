@@ -1,69 +1,84 @@
-.username {
-    position: absolute;
-    left: 10%;
+.container{
+  width: 90%;
+  margin: 20px auto;
 }
 
-.password {
-    position: absolute;
-    left: 25%;
+.username, .password,.firstname,.lastname,.email,.address {
+    float: left;
+    width: 16.25%;
+    text-align: center;
 }
 
-.firstname {
-    position: absolute;
-    left: 40%;
+.float-datas{
+  float: left;
+  width: 17%;
+  text-align: center;
 }
 
-.lastname {
-    position: absolute;
-    left: 55%;
+.float-datas2{
+  float: left;
+  width: 49%;
+  text-align: center;
 }
 
-.email {
-    position: absolute;
-    left: 70%;
+.datas, .box{
+  font-size: 18px;
+  box-shadow: 1px 2px 17px 0px rgba(0,0,0,0.25);
 }
 
-.address {
-    position: absolute;
-    left: 85%;
+.datas2{
+  font-size: 18px;
 }
 
-p {
-    margin: 10px;
+.datas:nth-child(odd) {
+  width: 100%;
+  border: solid 1px #f1f1f1;
+  background-color: #7f7f7f;
+  color: #fff;
+  line-height: 2;
+  font-family: 'Roboto Slab', serif;
 }
 
+.datas:nth-child(even) {
+  width: 100%;
+  border: solid 1px #f1f1f1;
+  background-color: #f1f1f1;
+  color: #5f5f5f;
+  line-height: 2;
+  font-family: 'Roboto Slab', serif;
+}
 
-.datas {
-    width: 100%;
-    border: solid black 2px;
-    border-radius: 10px;
-    margin-top: 5px;
-    background-color: #0275d8;
-    color: white;
-    font-family: 'Roboto Slab', serif;
+.datas2:nth-child(odd) {
+  width: 100%;
+  background-color: #7f7f7f;
+  color: #fff;
+  line-height: 2;
+  font-family: 'Roboto Slab', serif;
+}
+
+.datas2:nth-child(even) {
+  width: 100%;
+  background-color: #f1f1f1;
+  color: #5f5f5f;
+  line-height: 2;
+  font-family: 'Roboto Slab', serif;
 }
 
 .tabhead{
     font-weight: bold;
     font-size: 20px;
     font-family: 'Roboto Slab', serif;
+    margin-bottom: 10px;
 }
 
 .title {
+    margin: 20px auto;
+    width: 80%;
     font-size: 30px;
     font-weight: bold;
     text-align: center;
-    border: 2px solid;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: #5cb85c;
+    border: 1px solid #aaaaaa;
+    background: #ffffff;
     font-family: 'Roboto Slab', serif;
 }
- hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid black;
-    margin: 1em 0;
-    padding: 0; 
- }
+

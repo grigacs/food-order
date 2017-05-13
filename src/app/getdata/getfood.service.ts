@@ -40,6 +40,13 @@ export class GetfoodService {
     }
   }
 
+  getFoodsById(foodIds: number, foods: Foods[]): Foods{
+    for(let i = 0; i < foods.length; i++){
+      if(foods[i].food_id === foodIds){
+        return foods[i];
+      }
+    }
+  }
 
 
 }
