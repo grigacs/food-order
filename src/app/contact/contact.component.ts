@@ -52,7 +52,7 @@ export class ContactComponent implements OnInit {
   email: string;
   checked: boolean;
   time: Observable<Date>;
-  error: boolean = false;
+  error: boolean = true;
 
 
   state: string = 'inactive';

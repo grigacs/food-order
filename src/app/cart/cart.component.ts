@@ -31,6 +31,7 @@ export class CartComponent implements OnInit {
   public orderRequest: boolean = false;
   public pizzaCount: number;
   public totalCount: number;
+  public clickable: boolean = true;
 
   constructor(private sessionService: SessionService,
               private communicationService: CommunicationService) {
@@ -42,8 +43,13 @@ export class CartComponent implements OnInit {
     this.refreshCart();
   }
 
+  checkClick(){
+    this.clickable = false;
+  }
 
-
+  isClickable() {
+    return this.clickable;
+  }
 
   public collapsed(event:any):void {}
 
@@ -178,6 +184,7 @@ export class CartComponent implements OnInit {
           this.sessionService.emptyCart();
           this.totalCount = 0;
           this.successOrder = false;
+          this.clickable = true;
         },3000)
       }
     );
@@ -222,6 +229,7 @@ export class CartComponent implements OnInit {
             this.sessionService.emptyCart();
             this.totalCount = 0;
             this.successOrder = false;
+            this.clickable = true;
           },3000)
         }
       )

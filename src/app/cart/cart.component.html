@@ -75,7 +75,7 @@
               <button class="btn btn-danger btn-md" (click)="canelOrderRequest()">Cancel</button>
             </div>
             <div class="checkout">
-              <button class="btn btn-success btn-md" (click)="insertUsersOrder()">Confirm</button>
+              <button class="btn btn-success btn-md" (click)="insertUsersOrder()" [disabled]="!isClickable()" (click)="checkClick()">Confirm</button>
             </div>
           </ng-container>
           <div class="clear"></div>
@@ -118,7 +118,7 @@
               </div>
             </ng-container>
             <button name="reset" (click)="lgModal.hide()" class="btn btn-danger btn-md" type="reset">Cancel</button>
-            <button name="submit"  class="btn btn-success btn-md" type="submit">Order</button>
+            <button name="submit"  class="btn btn-success btn-md" type="submit" [disabled]="!isClickable()" (click)="checkClick()">Order</button>
           </form>
         </div>
       </div>
