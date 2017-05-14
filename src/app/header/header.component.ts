@@ -6,13 +6,15 @@ import {SessionService} from "../session.service";
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  providers: [SessionService]
+  providers: []
 })
 export class HeaderComponent implements OnInit {
 
   foods: Array<Foods> = [];
 
-  constructor(public sessionService: SessionService) {}
+  constructor(public sessionService: SessionService) {
+
+  }
 
 
   ngOnInit() {

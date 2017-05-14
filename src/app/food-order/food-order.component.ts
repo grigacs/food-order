@@ -8,13 +8,15 @@ import {StoredFoods} from "../interfaces/stored-food.interface";
 import {NgForm} from "@angular/forms";
 import {PopoverModule, PopoverConfig} from "ngx-bootstrap";
 import {CartService} from "../cart.service";
-import {Element} from "@angular/compiler";
+import {delay} from "rxjs/operator/delay";
+import {Observable} from "rxjs";
+
 
 @Component({
   selector: 'app-food-order',
   templateUrl: './food-order.component.html',
   styleUrls: ['./food-order.component.scss'],
-  providers: [GetfoodService, SessionService, PopoverModule, PopoverConfig, CartService]
+  providers: [GetfoodService, SessionService, PopoverModule, PopoverConfig]
 })
 
 export class FoodOrderComponent implements OnInit {
@@ -34,7 +36,6 @@ export class FoodOrderComponent implements OnInit {
   currentFood: Foods;
   message: string;
 
-
     constructor(private http: Http,
                 private getfoodService: GetfoodService,
                 private router: Router,
@@ -42,7 +43,9 @@ export class FoodOrderComponent implements OnInit {
                 private cartService: CartService) {
         this.getfoodService.getFoods().subscribe(food => this.food = food);
         this.price = 1;
-      }
+
+
+    }
 
   ngOnInit() {}
 
@@ -73,9 +76,9 @@ export class FoodOrderComponent implements OnInit {
    * check form is valid or not
    * if form is valid we set the food into session with the quantity value
    * */
-  addToCart(form: NgForm, food: Foods, pop: any){
+  addToCart(form: NgForm, food: Foods, pop:any){
+    pop.show();
 
-      pop.show();
 
     if(!form.valid){
       this.message = "All field must be filled out!";
@@ -92,12 +95,11 @@ export class FoodOrderComponent implements OnInit {
 
 
 
-    this.sessionService.setFood(food, form.value.quantity, form.value.size);
-
+    this.cartService.setFood(food, form.value.quantity, form.value.size);
   }
 
-
-  hide(pop: any){
-      pop.hide();
+  hide(pop:any){
+    setTimeout(() => {pop.hide()},2000)
   }
 }
+

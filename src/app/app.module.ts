@@ -31,6 +31,8 @@ import {ActivateRegisterGuard} from './activate-register.guard';
 import { UsersComponent } from './users/users.component';
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import {UsersOrders} from './interfaces/user-orders.interface';
+import {CartService} from "./cart.service";
+import {RegisterModule} from "./register/register.module";
 
   /** Routing has been created by Richard Asztalos
    *  Simple routing for the components. Admin route has a guard (for more details check AdminGuard and AdminComponent)
@@ -56,7 +58,6 @@ const appRoutes: Routes = [
     FoodOrderComponent,
     MainComponent,
     HeaderComponent,
-    RegisterComponent,
     LoginComponent,
     CartComponent,
     CarouselComponent,
@@ -78,10 +79,11 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     CollapseModule,
     ReactiveFormsModule,
+    RegisterModule,
     PopoverModule,
     BrowserAnimationsModule
   ],
-  providers: [SessionService, AdminGuard, ActivateRegisterGuard],
+  providers: [SessionService, AdminGuard, ActivateRegisterGuard, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

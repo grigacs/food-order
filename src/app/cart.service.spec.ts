@@ -9,7 +9,7 @@ describe('CartService', () => {
     });
   });
 
-  it('should ...', inject([CartService], (service: CartService) => {
+  it('should be created', inject([CartService], (service: CartService) => {
     expect(service).toBeTruthy();
   }));
 });

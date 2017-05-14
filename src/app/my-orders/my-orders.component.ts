@@ -55,9 +55,9 @@ export class MyOrdersComponent implements OnInit {
             }
           },
         error=> console.log(error),
-        ()=>  {console.log(this.orders)}
+        ()=>  {}
         );
-        console.log(this.myOrders); return this.myOrders;  }
+         return this.myOrders;  }
     )
   }
 

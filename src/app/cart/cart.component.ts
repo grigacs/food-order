@@ -4,7 +4,9 @@ import {StoredFoods} from "../interfaces/stored-food.interface";
 import {CommunicationService} from "../communication.service";
 import {Users} from "../interfaces/user.interface";
 import {NgForm} from "@angular/forms";
-
+import {of} from "rxjs/observable/of";
+import {Observable} from "rxjs";
+import {CartService} from "../cart.service";
 
 
 @Component({
@@ -32,11 +34,20 @@ export class CartComponent implements OnInit {
   public pizzaCount: number;
   public totalCount: number;
   public clickable: boolean = true;
+  public shoppingCartItems$:Observable<Array<StoredFoods>> = of([]);
+
 
   constructor(private sessionService: SessionService,
+              public cartService: CartService,
               private communicationService: CommunicationService) {
                 this.pizzaCount = 0;
                 this.totalCount = 0;
+    //this.sessionService.itemsInCartSubject.subscribe(foods => {this.foods = foods; console.log(this.foods)});
+    this.shoppingCartItems$ = this.cartService.getFoodObservable();
+
+    this.shoppingCartItems$.subscribe(food =>{
+      this.foods = food;
+    });
   }
 
   ngOnInit() {
@@ -60,7 +71,7 @@ export class CartComponent implements OnInit {
   }
 
   Add(event: Event){
-        this.refreshCart()
+    setTimeout(() => {this.foods = this.sessionService.getFoods();},30)
   }
 
   // show foods at cart which are stored at sessionStorage

@@ -46,13 +46,13 @@ export class AdminOrdersComponent implements OnInit {
             for (let i = 0; i < this.usersOrders.length; i++) {
               this.pizzaProps[i] = [];
               for(let j = 0; j < this.usersOrders[i].food_ids.length; j++) {
-                let pizza = this.getFoodService.getFoodsById(this.usersOrders[i].food_ids[j], foods)
+                let pizza = this.getFoodService.getFoodsById(this.usersOrders[i].food_ids[j], foods);
                 this.pizzaProps[i].push(pizza.name + ' x' + this.usersOrders[i].food_quantities[j] + ' ' + this.usersOrders[i].food_sizes[j])
               }
             }
           },
           error => {},
-          () => {console.log(this.pizzaProps);}
+          () => {}
         );
 
 
@@ -62,7 +62,7 @@ export class AdminOrdersComponent implements OnInit {
             }
           },
           error => {},
-          () => {console.log(this.usersProp)}
+          () => {}
         );
       }
     );
@@ -75,13 +75,13 @@ export class AdminOrdersComponent implements OnInit {
             for (let i = 0; i < this.guestsOrders.length; i++) {
               this.pizzaGuestProps[i] = [];
               for(let j = 0; j < this.guestsOrders[i].food_ids.length; j++) {
-                let pizza = this.getFoodService.getFoodsById(this.guestsOrders[i].food_ids[j], foods)
+                let pizza = this.getFoodService.getFoodsById(this.guestsOrders[i].food_ids[j], foods);
                 this.pizzaGuestProps[i].push(pizza.name + ' x' + this.guestsOrders[i].food_quantities[j] + ' ' + this.guestsOrders[i].food_sizes[j])
               }
             }
           },
           error => {},
-          () => {console.log(this.pizzaGuestProps);}
+          () => {}
         );
       }
     );
