@@ -81,7 +81,7 @@ Components:
 	08.) Header
 	09.) Login
 	10.) Main
-       	11.) Page-not-found
+    11.) Page-not-found
 	12.) Register
 	13.) Users
 
