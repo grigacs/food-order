@@ -33,6 +33,8 @@ import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import {UsersOrders} from './interfaces/user-orders.interface';
 import {CartService} from "./cart.service";
 import {RegisterModule} from "./register/register.module";
+import {LazyModule} from "./lazy/lazy.module";
+import {AdminOrdersModule} from "./admin-orders/admin-orders.module";
 
   /** Routing has been created by Richard Asztalos
    *  Simple routing for the components. Admin route has a guard (for more details check AdminGuard and AdminComponent)
@@ -45,8 +47,8 @@ const appRoutes: Routes = [
     { path: 'my_order', component: MyOrdersComponent, canActivate: [ActivateRegisterGuard] },
     { path: 'register', component: RegisterComponent},
     { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
-    { path: 'admin-orders', component: AdminOrdersComponent, canActivate: [AdminGuard] },
-    { path: 'users', component: UsersComponent, canActivate: [AdminGuard] },
+    //{ path: 'admin-orders', component: AdminOrdersComponent, canActivate: [AdminGuard] },
+    { path: 'users', loadChildren: './lazy/lazy.module#LazyModule', canActivate: [AdminGuard] },
     { path: '**', component: PageNotFoundComponent, pathMatch: 'full'}
 ];
 
@@ -66,8 +68,6 @@ const appRoutes: Routes = [
     ClickOutsideDirective,
     CapitalizePipe,
     MyOrdersComponent,
-    UsersComponent,
-    AdminOrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +81,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RegisterModule,
     PopoverModule,
+    LazyModule,
+    AdminOrdersModule,
     BrowserAnimationsModule
   ],
   providers: [SessionService, AdminGuard, ActivateRegisterGuard, CartService],
