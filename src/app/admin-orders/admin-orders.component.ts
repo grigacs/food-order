@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { Router , ActivatedRoute } from '@angular/router';
 import { GetUserService } from './../getdata/getuser.service';
 import { SessionService } from './../session.service';
 import { Users } from './../interfaces/user.interface';
@@ -25,19 +23,17 @@ export class AdminOrdersComponent implements OnInit {
   usersOrders: UsersOrders[];
   guestsOrders: GuestsOrders[];
   usersProp: Users[] = [];
-  pizzaProps = [];
-  pizzaGuestProps = [];
-  totalPrice = [];
-  date = [];
-  delivered = [];
+  pizzaProps: Array<any> = [];
+  pizzaGuestProps: Array<any> = [];
+  totalPrice: Array<any> = [];
+  date: Array<any> = [];
+  delivered: Array<any> = [];
   username: string;
 
-    constructor(private http: Http,
+    constructor(
                 private getUserService: GetUserService,
                 private getOrdersService: GetOrdersService,
-                private getFoodService: GetfoodService,
-                private router: Router,
-                private sessionService: SessionService) {
+                private getFoodService: GetfoodService) {
     }
 
   ngOnInit() {

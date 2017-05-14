@@ -18,7 +18,7 @@
                     <option *ngFor="let size of sizes" value="{{size}}" [selected]="size == 'small'">{{size}}</option>
                   </select>
                   <label class="name"> Quantity: </label>
-                  <input (change)="onChange(size, item.food_id, item, quantity.value)" #quantity  name="quantity" type="number" min="1" max="5" placeholder="1-5" class="quantity"
+                  <input  #quantity  name="quantity" type="number" min="1" max="5" placeholder="1-5" class="quantity"
                            required  [ngModel]="defaultQuantity" value="1"/> <br/><br/>
                   </div>
                   <div class="float-form">

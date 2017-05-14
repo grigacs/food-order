@@ -15,7 +15,7 @@ export class ClickOutsideDirective {
   public appClickBuy = new EventEmitter();
 
   @HostListener('document:click', ['$event.target'])
-  public onClick(targetElement) {
+  public onClick(targetElement: any) {
     const clickedInside = this.elementRef.nativeElement.contains(targetElement);
     const buttonClicked = targetElement.nodeName;
     if (  (!clickedInside  && buttonClicked != 'I' && buttonClicked != 'BUTTON' && buttonClicked != 'SPAN') ||

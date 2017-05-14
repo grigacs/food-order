@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { Router , ActivatedRoute } from '@angular/router';
-import { GetUserService } from './../getdata/getuser.service';
-import { SessionService } from './../session.service';
-import { Users } from './../interfaces/user.interface';
-import { GuestsOrders } from '../interfaces/guest-orders.interface';
-import { AdminGuard } from './../admin.guard';
-import { GetOrdersService } from './../getdata/getorders.service';
-import { UsersOrders } from './../interfaces/user-orders.interface';
+
 import {GetfoodService} from '../getdata/getfood.service';
+import {GetUserService} from "../getdata/getuser.service";
+import {GetOrdersService} from "../getdata/getorders.service";
+import {AdminGuard} from "../admin.guard";
+import {Users} from "../interfaces/user.interface";
+import {UsersOrders} from "../interfaces/user-orders.interface";
+import {GuestsOrders} from "../interfaces/guest-orders.interface";
 
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss'],
-  providers: [GetUserService, GetOrdersService, SessionService, AdminGuard, GetfoodService]
+  providers: [GetUserService, GetOrdersService, AdminGuard, GetfoodService]
 })
 export class AdminComponent implements OnInit {
 
@@ -29,19 +27,16 @@ export class AdminComponent implements OnInit {
   usersOrders: UsersOrders[];
   guestsOrders: GuestsOrders[];
   usersProp: Users[] = [];
-  pizzaProps = [];
-  pizzaGuestProps = [];
-  totalPrice = [];
-  date = [];
-  delivered = [];
+  pizzaProps: Array<any> = [];
+  pizzaGuestProps: Array<any> = [];
+  totalPrice: Array<any> = [];
+  date: Array<any> = [];
+  delivered: Array<any> = [];
   username: string;
 
-    constructor(private http: Http,
-                private getUserService: GetUserService,
+    constructor(private getUserService: GetUserService,
                 private getOrdersService: GetOrdersService,
-                private getFoodService: GetfoodService,
-                private router: Router,
-                private sessionService: SessionService) {
+                private getFoodService: GetfoodService) {
         this.getUserService.getUsers().subscribe(users => this.users = users);
     }
 
@@ -56,13 +51,13 @@ export class AdminComponent implements OnInit {
             for (let i = 0; i < this.usersOrders.length; i++) {
               this.pizzaProps[i] = [];
               for(let j = 0; j < this.usersOrders[i].food_ids.length; j++) {
-                let pizza = this.getFoodService.getFoodsById(this.usersOrders[i].food_ids[j], foods)
-                this.pizzaProps[i].push(pizza.name + ' x' + this.usersOrders[i].food_quantities[j] + ' ' + this.usersOrders[i].food_sizes[j])
+                let pizza = this.getFoodService.getFoodsById(this.usersOrders[i].food_ids[j], foods);
+                this.pizzaProps[i].push(pizza.name + ' x' + this.usersOrders[i].food_quantities[j] + ' ' + this.usersOrders[i].food_sizes[j]);
               }
             }
           },
-          error => {},
-          () => {console.log(this.pizzaProps);}
+          error => {console.log(error)},
+          () => {}
         );
 
 
@@ -71,8 +66,8 @@ export class AdminComponent implements OnInit {
               this.usersProp.push(this.getUserService.getUserById(users, this.usersOrders[i].user_id));
             }
           },
-          error => {},
-          () => {console.log(this.usersProp)}
+          error => {console.log(error)},
+          () => {}
         );
       }
     );
@@ -85,13 +80,13 @@ export class AdminComponent implements OnInit {
             for (let i = 0; i < this.guestsOrders.length; i++) {
               this.pizzaGuestProps[i] = [];
               for(let j = 0; j < this.guestsOrders[i].food_ids.length; j++) {
-                let pizza = this.getFoodService.getFoodsById(this.guestsOrders[i].food_ids[j], foods)
+                let pizza = this.getFoodService.getFoodsById(this.guestsOrders[i].food_ids[j], foods);
                 this.pizzaGuestProps[i].push(pizza.name + ' x' + this.guestsOrders[i].food_quantities[j] + ' ' + this.guestsOrders[i].food_sizes[j])
               }
             }
           },
-          error => {},
-          () => {console.log(this.pizzaGuestProps);}
+          error => {console.log(error)},
+          () => {}
         );
       }
     );

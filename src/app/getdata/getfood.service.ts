@@ -1,14 +1,14 @@
-import { Foods } from './../interfaces/food.interface';
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs';
-import {SessionService} from "../session.service";
+import {Foods} from "../interfaces/food.interface";
+
 
 
 @Injectable()
 export class GetfoodService {
 
-  constructor(private http: Http, private sessionService:SessionService) { }
+  constructor(private http: Http) { }
 
     /** Created by Richard Asztalos
      *           This service helps to the food-order component to list out the stored foods.

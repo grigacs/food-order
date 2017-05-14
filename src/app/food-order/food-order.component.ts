@@ -1,4 +1,4 @@
-import {Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { GetfoodService } from '../getdata/getfood.service';
@@ -8,6 +8,7 @@ import {StoredFoods} from "../interfaces/stored-food.interface";
 import {NgForm} from "@angular/forms";
 import {PopoverModule, PopoverConfig} from "ngx-bootstrap";
 import {CartService} from "../cart.service";
+import {Element} from "@angular/compiler";
 
 @Component({
   selector: 'app-food-order',
@@ -49,22 +50,11 @@ export class FoodOrderComponent implements OnInit {
       this.foods = this.sessionService.getFoods();
   }
 
-  onChange(target, id, item, quantity){
-
+  onChange(target: any, id: number , item:StoredFoods){
     this.getfoodService.getFoods().subscribe(
       food => {
         this.currentFood = this.getfoodService.getCurrentFood(food, id);
 
-        /*if (quantity != '')
-        {
-          if (target.value == 'small' && this.currentFood.food_id == id) {
-            item.basic_price = (this.currentFood.basic_price * quantity);
-          } else if (target.value == 'medium' && this.currentFood.food_id == id) {
-            item.basic_price = (this.currentFood.basic_price * 1.5 * quantity);
-          } else if (target.value == 'big' && this.currentFood.food_id == id) {
-            item.basic_price = (this.currentFood.basic_price * 2.2 * quantity);
-          }
-        }else{*/
           if (target.value == 'small' && this.currentFood.food_id == id) {
             item.basic_price = this.currentFood.basic_price;
           } else if (target.value == 'medium' && this.currentFood.food_id == id) {
@@ -72,7 +62,6 @@ export class FoodOrderComponent implements OnInit {
           } else if (target.value == 'big' && this.currentFood.food_id == id) {
             item.basic_price = this.currentFood.basic_price * 2.2;
           }
-        //}
       }
     );
 
@@ -84,7 +73,7 @@ export class FoodOrderComponent implements OnInit {
    * check form is valid or not
    * if form is valid we set the food into session with the quantity value
    * */
-  addToCart(form: NgForm, food: Foods, pop){
+  addToCart(form: NgForm, food: Foods, pop: any){
 
       pop.show();
 
@@ -108,7 +97,7 @@ export class FoodOrderComponent implements OnInit {
   }
 
 
-  hide(pop){
+  hide(pop: any){
       pop.hide();
   }
 }

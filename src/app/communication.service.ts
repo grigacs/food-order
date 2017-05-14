@@ -92,6 +92,7 @@ export class CommunicationService {
                     lastname: string, mail: string, address:string, totalPrice: number): Observable<string>{
     this.foodIds = [];
     this.foodQueantites = [];
+    this.foodSizes = [];
     this.date = this.dateFormatNow();
     for(let i = 0; i < order.length; i++){
       let foodId = order[i].food_id;
@@ -108,14 +109,12 @@ export class CommunicationService {
                           food_ids: this.foodIds, food_quantities:this.foodQueantites,
                           food_sizes:this.foodSizes, delivered: false, totalPrice: totalPrice};
 
-    console.log(this.guests_orders)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     this.result = this.http.post('http://localhost:8100/guests_orders', JSON.stringify(this.guests_orders), {
       headers: headers
     })
       .map(res => res.text());
-
     return this.result;
   }
 

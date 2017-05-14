@@ -1,11 +1,9 @@
-import {Component, OnInit, ElementRef} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SessionService} from "../session.service";
 import {StoredFoods} from "../interfaces/stored-food.interface";
 import {CommunicationService} from "../communication.service";
 import {Users} from "../interfaces/user.interface";
 import {NgForm} from "@angular/forms";
-import {Subject} from "rxjs";
-import {delay} from "rxjs/operator/delay";
 
 
 
@@ -35,8 +33,7 @@ export class CartComponent implements OnInit {
   public totalCount: number;
 
   constructor(private sessionService: SessionService,
-              private communicationService: CommunicationService,
-              private elementRef: ElementRef) {
+              private communicationService: CommunicationService) {
                 this.pizzaCount = 0;
                 this.totalCount = 0;
   }
@@ -195,7 +192,7 @@ export class CartComponent implements OnInit {
    *  if valid send the order , show information from result
    *  after remove the cart content and close
    * */
-  insertGuestOrder(form: NgForm, lgModal) {
+  insertGuestOrder(form: NgForm, lgModal: any) {
     this.error = false;
 
     if (!form.valid) {

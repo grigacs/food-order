@@ -52,6 +52,8 @@ export class ContactComponent implements OnInit {
   email: string;
   checked: boolean;
   time: Observable<Date>;
+  error: boolean = false;
+
 
   state: string = 'inactive';
 
@@ -64,12 +66,14 @@ export class ContactComponent implements OnInit {
   contact(form: NgForm){
      if (!form.valid) {
         if(form.value.first_name == '' || form.value.last_name == '' || form.value.problem == '' || form.value.email == ''){
+          this.error = true;
           this.errorMessage = 'All fields must be filled out!';
           this.checked = false;
         }
         return;
      }else{
        this.errorMessage = '';
+       this.error = false;
        this.first_name = form.value.first_name;
        this.last_name = form.value.last_name;
        this.problem = form.value.problem;

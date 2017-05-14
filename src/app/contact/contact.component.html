@@ -9,7 +9,7 @@
         <span class="error" *ngIf="!checked">{{errorMessage}} </span>
         <button class="btn btn-success btn-md check-form" *ngIf="!checked"> Check </button>
         <span class="correct" *ngIf="checked"> All the datas are correct, send the message!</span>
-        <button type="submit" id="send" class="btn btn-success btn-md check-form" (click)="staticModal.show(); toggleMove()" *ngIf="(errorMessage == '') && (errorMessage != 'All fields must be filled out!')"> Send </button>
+        <button type="submit" id="send" class="btn btn-success btn-md check-form" (click)="staticModal.show()" *ngIf="error === false"> Send </button>
   </form>
 </div>
 

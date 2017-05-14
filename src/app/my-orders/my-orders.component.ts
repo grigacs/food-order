@@ -11,13 +11,13 @@ import {GetfoodService} from "../getdata/getfood.service";
 })
 export class MyOrdersComponent implements OnInit {
 
-  private id: number;
-  private myOrders = [];
-  private myFoods = [];
-  private orders = [];
-  private totalPrice = [];
-  private date = [];
-  private delivered = [];
+  id: number;
+  myOrders: Array<any> = [];
+  myFoods: Array<any> = [];
+  orders: Array<any> = [];
+  totalPrice: Array<any> = [];
+  date: Array<any> = [];
+  delivered: Array<any> = [];
 
   constructor(private sessionService: SessionService,
               private getMyOrderService: GetMyOrdersService,

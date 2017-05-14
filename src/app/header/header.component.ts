@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
   foods: Array<Foods> = [];
 
-  constructor(private sessionService: SessionService) {}
+  constructor(public sessionService: SessionService) {}
 
 
   ngOnInit() {

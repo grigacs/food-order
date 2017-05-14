@@ -2,19 +2,22 @@ import { Injectable } from '@angular/core';
 import {Users} from "./interfaces/user.interface";
 import {Foods} from "./interfaces/food.interface";
 import {StoredFoods} from "./interfaces/stored-food.interface";
-import {Subject, Observable} from "rxjs";
+import {Subject, Observable, BehaviorSubject} from "rxjs";
 
 
 @Injectable()
 export class SessionService {
 
-  private loggedIn: boolean = false;
-  private user: Users;
-  private foods: Array<StoredFoods> = [];
-  private sameFoodAdded:boolean;
-  private storedFoods: StoredFoods;
+  loggedIn: boolean = false;
+  user: Users;
+  foods: Array<StoredFoods> = [];
+  sameFoodAdded:boolean;
+  storedFoods: StoredFoods;
+  itemsInCartSubject: BehaviorSubject<Array<StoredFoods>> = new BehaviorSubject([]);
 
-  constructor() { }
+  constructor() {
+    this.itemsInCartSubject.subscribe(foods => this.foods = foods);
+  }
 
 
   /**
@@ -222,7 +225,12 @@ export class SessionService {
         this.foods.push(JSON.parse(strFoodObjects[i]))
       }
     }
+    this.itemsInCartSubject.next(this.foods);
     return this.foods;
+  }
+
+  public getFood(): Observable<Array<StoredFoods>>{
+    return this.itemsInCartSubject.asObservable();
   }
 
 
@@ -238,6 +246,7 @@ export class SessionService {
       }
     }
     return this.foods;
+
   }
 
 
