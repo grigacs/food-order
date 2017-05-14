@@ -8,7 +8,7 @@ import { GuestsOrders } from '../interfaces/guest-orders.interface';
 import { AdminGuard } from './../admin.guard';
 import { GetOrdersService } from './../getdata/getorders.service';
 import { UsersOrders } from './../interfaces/user-orders.interface';
-import {GetfoodService} from "../getdata/getfood.service";
+import {GetfoodService} from '../getdata/getfood.service';
 
 
 @Component({
@@ -19,7 +19,7 @@ import {GetfoodService} from "../getdata/getfood.service";
 })
 export class AdminComponent implements OnInit {
 
-  /** Created by Richard Asztalos
+  /** Created by Richard Asztalos, associated with Gergely Der (orders listing)
    *           Users which are stored in database will be listed by admin.
    *           This component helps to create admin menu (here we need to subscribe to list users, and orders (guest and user orders)).
    *           Admin route has been guarded by AdminGuard.

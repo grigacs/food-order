@@ -1,3 +1,24 @@
-<p>
-  users works!
-</p>
+<div class="container">
+  <div class="title">
+    <span> List of Users </span>
+  </div>
+  <div class="tabhead">
+    <span class="username"> Username </span>
+    <span class="password"> Password </span>
+    <span class="firstname"> First Name </span>
+    <span class="lastname">  Last Name </span>
+    <span class="email">  Email </span>
+    <span class="address">  Address </span>
+    <div class="clear"></div>
+  </div>
+
+    <div *ngFor="let user of users" class="datas">
+    <span class="username"> {{ user.username }} </span>
+    <span class="password">   {{ user.password }} </span>
+    <span class="firstname">  {{ user.firstname }} </span>
+    <span class="lastname">  {{ user.lastname }} </span>
+    <span class="email">  {{ user.email }} </span>
+    <span class="address">  {{ user.address }} </span>
+    <div class="clear"></div>
+  </div>
+</div>

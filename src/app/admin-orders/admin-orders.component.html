@@ -1,3 +1,74 @@
-<p>
-  admin-orders works!
-</p>
+<div class="container">
+  <div class="title">
+    <span> List of Orders  </span>
+  </div>
+  <div class="tabhead">
+     <span class="float-datas"> Username </span>
+     <span class="float-datas"> Address </span>
+     <span class="float-datas2"> Orders </span>
+     <span class="float-datas">  Total Price </span>
+    <div class="clear"></div>
+  </div>
+  <div class="box">
+  <div class="float-datas">
+  <div *ngFor="let uProp of usersProp" class="datas2">
+    <div>  {{ uProp.username}}   </div>
+  </div>
+  </div>
+  <div class="float-datas">
+  <div *ngFor="let uProp of usersProp" class="datas2">
+    <div>  {{ uProp.address}}   </div>
+  </div>
+  </div>
+  <div class="float-datas2">
+    <div *ngFor="let pProp of pizzaProps" class="datas2">
+      <div>  {{ pProp }}   </div>
+    </div>
+  </div>
+  <div class="float-datas">
+    <div *ngFor="let uOrder of usersOrders" class="datas2">
+      <div> € {{ uOrder.totalPrice}}   </div>
+    </div>
+  </div>
+    <div class="clear"></div>
+  </div>
+
+</div>
+
+<div class="container">
+  <div class="title">
+    <span> List of Guest Orders   </span>
+  </div>
+  <div class="tabhead">
+     <span class="float-datas"> Full Name</span>
+     <span class="float-datas"> Address </span>
+     <span class="float-datas2"> Foods  </span>
+     <span class="float-datas">  Total Price </span>
+    <div class="clear"></div>
+  </div>
+
+  <div class="box">
+    <div class="float-datas">
+      <div *ngFor="let gorder of guestsOrders" class="datas2">
+        <div>  {{ gorder.first_name }}  {{ gorder.last_name }}   </div>
+      </div>
+    </div>
+    <div class="float-datas">
+      <div *ngFor="let gorder of guestsOrders" class="datas2">
+        <div>  {{ gorder.address}}   </div>
+      </div>
+    </div>
+    <div class="float-datas2">
+      <div *ngFor="let pGuestProp of pizzaGuestProps" class="datas2">
+        <div>  {{ pGuestProp }}   </div>
+      </div>
+    </div>
+    <div class="float-datas">
+      <div *ngFor="let gorder of guestsOrders" class="datas2">
+        <div> € {{ gorder.totalPrice}}   </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+
