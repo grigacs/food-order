@@ -34,7 +34,7 @@ export class CartComponent implements OnInit {
   public pizzaCount: number;
   public totalCount: number;
   public clickable: boolean = true;
-  public shoppingCartItems$:Observable<Array<StoredFoods>> = of([]);
+  public shoppingCartItems$:Observable<StoredFoods[]> = of([]);
 
 
   constructor(private sessionService: SessionService,
@@ -47,6 +47,7 @@ export class CartComponent implements OnInit {
 
     this.shoppingCartItems$.subscribe(food =>{
       this.foods = food;
+      this.setPrice(this.foods);
     });
   }
 
@@ -71,7 +72,7 @@ export class CartComponent implements OnInit {
   }
 
   Add(event: Event){
-    setTimeout(() => {this.foods = this.sessionService.getFoods();},30)
+    //setTimeout(() => {this.foods = this.sessionService.getFoods();},30)
   }
 
   // show foods at cart which are stored at sessionStorage

@@ -77,7 +77,7 @@ export class FoodOrderComponent implements OnInit {
    * if form is valid we set the food into session with the quantity value
    * */
   addToCart(form: NgForm, food: Foods, pop:any){
-    pop.show();
+
 
 
     if(!form.valid){
@@ -92,14 +92,14 @@ export class FoodOrderComponent implements OnInit {
     }
 
     this.message = "successful added into cart!";
-
-
+    setTimeout(() => {pop.show();},500);
+    pop.show();
 
     this.cartService.setFood(food, form.value.quantity, form.value.size);
   }
 
   hide(pop:any){
-    setTimeout(() => {pop.hide()},2000)
+    setTimeout(() => {pop.hide()},3000);
   }
 }
 

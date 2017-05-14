@@ -6,7 +6,7 @@ import {Foods} from "./interfaces/food.interface";
 @Injectable()
 export class CartService {
 
-  foods: Array<StoredFoods> = [];
+  foods: StoredFoods[] = [];
   sameFoodAdded:boolean;
   storedFoods: StoredFoods;
   itemsInCartSubject: BehaviorSubject<Array<StoredFoods>> = new BehaviorSubject([]);
@@ -15,7 +15,7 @@ export class CartService {
     this.itemsInCartSubject.subscribe(foods => this.foods = foods);
   }
 
-  public getFoodObservable(): Observable<Array<StoredFoods>>{
+  public getFoodObservable(): Observable<StoredFoods[]>{
     return this.itemsInCartSubject.asObservable();
   }
 
