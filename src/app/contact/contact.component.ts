@@ -1,14 +1,36 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding} from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { CapitalizePipe} from '../capitalize.pipe';
 import { Observable } from 'rxjs/Observable';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
+  animations: [
+
+        trigger('focusPanel', [
+            state('inactive', style({
+                transform: 'translateX(-100%) scale(0) translateY(-150%)'
+            })),
+            state('active', style({
+                transform: 'scaleX(1.2) scaleY(1.2) translateY(20%)'
+            })),
+            transition('inactive => active', [animate('1000ms ease-in'), style({transform: 'translateX(100%) translateY(20%)'})]),
+            transition('active => inactive', animate('400ms ease-out'))
+        ])
+  ]
 })
 export class ContactComponent implements OnInit {
   @HostBinding('class') class = 'contact';
@@ -30,6 +52,12 @@ export class ContactComponent implements OnInit {
   email: string;
   checked: boolean;
   time: Observable<Date>;
+
+  state: string = 'inactive';
+
+    toggleMove() {
+        this.state = (this.state === 'inactive' ? 'active' : 'inactive');
+    }
 
   constructor(private router: Router) { }
 

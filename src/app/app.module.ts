@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
@@ -12,12 +13,12 @@ import { FoodOrderComponent } from './food-order/food-order.component';
 import { MainComponent } from './main/main.component';
 import {RouterModule, Routes} from '@angular/router';
 import { HeaderComponent } from './header/header.component';
-import { RegisterComponent } from "./register/register.component";
+import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { SessionService } from "./session.service";
+import { SessionService } from './session.service';
 import { CartComponent } from './cart/cart.component';
 import { CarouselComponent } from './carousel/carousel.component';
-import { CarouselModule } from "ngx-bootstrap";
+import { CarouselModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CartCollapseComponent } from './cart-collapse/cart-collapse.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
@@ -26,10 +27,10 @@ import { ClickOutsideDirective } from './click-outside.directive';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { CapitalizePipe } from './capitalize.pipe';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
-import {ActivateRegisterGuard} from "./activate-register.guard";
+import {ActivateRegisterGuard} from './activate-register.guard';
 import { UsersComponent } from './users/users.component';
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
-import {UsersOrders} from "./interfaces/user-orders.interface";
+import {UsersOrders} from './interfaces/user-orders.interface';
 
   /** Routing has been created by Richard Asztalos
    *  Simple routing for the components. Admin route has a guard (for more details check AdminGuard and AdminComponent)
@@ -77,7 +78,8 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     CollapseModule,
     ReactiveFormsModule,
-    PopoverModule
+    PopoverModule,
+    BrowserAnimationsModule
   ],
   providers: [SessionService, AdminGuard, ActivateRegisterGuard],
   bootstrap: [AppComponent]
