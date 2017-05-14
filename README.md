@@ -2,7 +2,7 @@ Justice League team
 
 Members:
 
-    Richard Asztalos (active)
+      Richard Asztalos (active)
 	  Adel Csucs (inactive)
 	  Gergely Der (active)
 	  Tamas Kapitany (inactive)
@@ -10,13 +10,14 @@ Members:
 
 
 Setup:
- - to run server open food-order-server folder, open cmd there and run: 'node index.js'
+
+    - to run server open food-order-server folder, open cmd there and run: 'node index.js'
  
- - to run the application (JIT): npm start 
+    - to run the application (JIT): npm start 
  
- - app in the browser: localhost:4200
+    - app in the browser: localhost:4200
  
- - server in the browser: localhost:8100/database
+    - server in the browser: localhost:8100/database
 
 
 Requirements: Alap elvárások (30 pont):
