@@ -97,7 +97,7 @@
       </div>
       <div class="modal-body">
         <div>
-          <form (ngSubmit)="insertGuestOrder(orderForm, lgModal)" #orderForm="ngForm">
+          <form #orderForm="ngForm">
             <label for="firstname">First Name:</label>
             <input type="text" id="firstname" name="firstname" placeholder="Enter Your First Name" required ngModel/>
             <label for="lastname">Last Name:</label>
@@ -118,7 +118,7 @@
               </div>
             </ng-container>
             <button name="reset" (click)="lgModal.hide()" class="btn btn-danger btn-md" type="reset">Cancel</button>
-            <button name="submit"  class="btn btn-success btn-md" type="submit" [disabled]="!isClickable()" (click)="checkClick()">Order</button>
+            <button name="submit"  class="btn btn-success btn-md" type="submit" [disabled]="!isClickable()" (click)="checkClick();insertGuestOrder(orderForm, lgModal)">Order</button>
           </form>
         </div>
       </div>

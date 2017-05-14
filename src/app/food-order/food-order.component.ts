@@ -87,7 +87,7 @@ export class FoodOrderComponent implements OnInit {
 
 
     if(form.value.quantity < 1 || form.value.quantity > 5){
-      form.value.quantity = 1;
+      this.message = "Maximum 5!";
       return;
     }
 
