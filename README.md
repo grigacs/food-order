@@ -12,45 +12,45 @@ Setup:
 
 
 Requirements:
-Alap elv�r�sok (30 pont):
-		Projekt mefelel�en legyen strukt�r�lva (pipa)
+Alap elvárások (30 pont):
+		Projekt mefelelően legyen struktúrálva (pipa)
 
-		Feature-�k legyenek modulokra bontva   (pipa)
+		Feature-ök legyenek modulokra bontva   (pipa)
 
-		Tilos k�zvetlen�l DOM-ot manipul�lni!  (pipa)
-			A DOM manipul�ci� csak akkor megengedett, ha nem lehet angularral megoldani! B�vebben
-			Tan�csok:
-			Ker�ld el, ha lehet!
-			Haszn�ld k�r�ltekint�en, ha sz�ks�ges! (pipa)
+		Tilos közvetlenűl DOM-ot manipulálni!  (pipa)
+			A DOM manipulució csak akkor megengedett, ha nem lehet angularral megoldani! Bővebben
+			Tanácsok:
+			Kerüld el, ha lehet!
+			Használd körültekintően, ha szükséges! (pipa)
 
-		Legal�bb 4.x.x Angular haszn�lata      (pipa)
-		Ford�that�s�g JIT �s AOT m�dban        (pipa)
-		Kommentezett forr�sk�d		       (pipa)
-		Git verzi�kezel� rendszer haszn�lata   (pipa)
+		Legalább 4.x.x Angular használata      (pipa)
+		Fordíthatóság JIT és AOT módban        (pipa)
+		Kommentezett forráskód		       (pipa)
+		Git verziókezelő rendszer használata   (pipa)
 
 
-Elk�sz�tend� funkci�k (45 pont):
-		Legal�bb 3 route		       (pipa)
+Elkészítendő funkciók (45 pont):
+		Legalább 3 route		       (pipa)
 
-		Legal�bb 3 module, legal�bb 1 lazy loaded module  (pipa)
+		Legalább 3 module, legalább 1 lazy loaded module  (pipa)
 
-		Legal�bb 1 service (pipa)
+		Legalább 1 service (pipa)
 
-		Legal�bb 1 direkt�va (ami nem komponens)(pipa)
+		Legalább 1 direktíva (ami nem komponens)(pipa)
 
-		Legal�bb 10 (�rtelmes) komponens        (pipa)
+		Legalább 10 (értelmes) komponens        (pipa)
 	
-		Legal�bb 1 (�rtelmes) form              (pipa)
+		Legalább 1 (értelmes) form              (pipa)
 
-		Legal�bb 1 pipe                         (pipa)
+		Legalább 1 pipe                         (pipa)
 
 
-4 f�s csapat eset�n m�g k�telez�:
-		Anim�ci�k haszn�lata                    (pipa)
+4 fős csapat esetén még kötelező:
+		Animíciók használata                    (pipa)
 
 		+3 komponens                            (pipa)
 
-		+1 form, pipe, direkt�va vagy service   (pipa)
+		+1 form, pipe, direktíva vagy service   (pipa)
 
 
 
@@ -118,3 +118,5 @@ More: - bootstrap css (ngx-valor)
       - JSON processing (via own server)
       - Assets (pictures, db)
 
+food-order-serve folderban található index.js. 
+Szerver indítása: node index.js
